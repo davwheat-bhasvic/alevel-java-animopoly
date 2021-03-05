@@ -4,9 +4,9 @@
 
 ## Members
 
-**Team lead:**
+**Team lead: All**
 
-**All:**
+
 
 ## Making decisions
 
