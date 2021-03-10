@@ -41,7 +41,7 @@ public class Game {
      *
      * @return List of all players
      */
-    public Player getPlayers() {
+    public ArrayList<Player> getPlayers() {
         return this.players;
     }
 
@@ -102,7 +102,7 @@ public class Game {
             System.out.println("Hello " + name + "!");
             System.out.println("");
 
-            this.players.add(new Player(name, i));
+            this.players.add(new Player(name, i, this));
         }
     }
 }
