@@ -56,4 +56,4 @@ Help them out! Ask if they're stuck or need some help with something.
 - [x] David
 - [ ] Finn
 - [x] Luca
-- [ ] Zach
+- [x] Zach
