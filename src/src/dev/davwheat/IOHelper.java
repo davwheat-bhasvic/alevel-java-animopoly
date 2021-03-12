@@ -45,7 +45,7 @@ public class IOHelper {
         }
     }
 
-    private Boolean validStringInput(String input) {
+    private boolean validStringInput(String input) {
         if (input.length() > 0) {
             return true;
         }
@@ -53,7 +53,7 @@ public class IOHelper {
         return false;
     }
 
-    private Boolean validIntInput(String input) {
+    private boolean validIntInput(String input) {
         if (input.length() > 0) {
             try {
                 Integer.parseInt(input);
