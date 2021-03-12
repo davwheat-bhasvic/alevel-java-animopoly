@@ -1,4 +1,4 @@
-package dev.davwheat;
+package dev.davwheat.enums;
 
 public enum BoardSpaceType {
     ANIMAL,
