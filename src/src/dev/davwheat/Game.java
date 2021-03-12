@@ -2,6 +2,7 @@ package dev.davwheat;
 
 import dev.davwheat.exceptions.InvalidActorException;
 
+import javax.naming.NoPermissionException;
 import java.util.ArrayList;
 
 /**
@@ -59,11 +60,11 @@ public class Game {
      * End the active player's turn.
      *
      * @param actor The Player class which is calling this method.
-     * @throws InvalidActorException
+     * @throws NoPermissionException Actor is not the active player
      */
-    public void endTurn(Player actor) throws InvalidActorException {
+    public void endTurn(Player actor) throws NoPermissionException {
         if (actor != activePlayer) {
-            throw new InvalidActorException("Only the active player can end the turn.");
+            throw new NoPermissionException("Only the active player can end the turn.");
         }
 
         // Get the index of the current active player
