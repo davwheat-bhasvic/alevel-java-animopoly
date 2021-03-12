@@ -45,6 +45,17 @@ public class IOHelper {
         }
     }
 
+    public char readChar(String message, String failMessage) {
+        while (true) {
+            System.out.println(message);
+            String input = scanner.nextLine();
+            if (validCharInput(input)) {
+                return (input).charAt(0);
+            }
+            System.out.println(failMessage);
+        }
+    }
+
     private boolean validStringInput(String input) {
         if (input.length() > 0) {
             return true;
@@ -61,6 +72,14 @@ public class IOHelper {
             } catch (NumberFormatException e) {
                 return false;
             }
+        }
+
+        return false;
+    }
+
+    private boolean validCharInput(String input) {
+        if (input.length() == 1) {
+            return input.matches("[A-Z][a-z][0-9](!£%)")
         }
 
         return false;
