@@ -4,6 +4,23 @@ package dev.davwheat;
  * A Player who is engaged in the current game.
  */
 public class Player {
+    /**
+     * The player's index in the Game's list of all players.
+     * <p>
+     * Starts at 0.
+     */
+    public final int playerId;
+
+    /**
+     * The player's name.
+     */
+    public final String playerName;
+
+    /**
+     * Visual identifier for the player. Acts as a way to
+     * identify the player on the game board.
+     */
+    public final char playerVisualIdentifier;
 
     /**
      * Current position on the board as an index.
@@ -18,17 +35,6 @@ public class Player {
     private double currentBankBalance;
 
     /**
-     * The player's name.
-     */
-    public final String playerName;
-    /**
-     * The player's index in the Game's list of all players.
-     * <p>
-     * Starts at 0.
-     */
-    public final int playerId;
-
-    /**
      * Instance of Game that this Player is part of.
      */
     private final Game gameInstance;
@@ -36,17 +42,19 @@ public class Player {
     /**
      * Create a new instance of Player.
      *
-     * @param name     The Player's name
-     * @param playerId The Player's ID (0-index in game's list of players)
-     * @param game     The current game instance.
+     * @param name                   The Player's name
+     * @param playerId               The Player's ID (0-index in game's list of players)
+     * @param game                   The current game instance.
+     * @param playerVisualIdentifier The visual identifier to use to show the player on the game board.
      */
-    public Player(String name, int playerId, Game game) {
+    public Player(String name, int playerId, Game game, char playerVisualIdentifier) {
         this.currentSpaceIndex = 0;
         // TODO: Check starting balance.
         this.currentBankBalance = 500;
         this.gameInstance = game;
         this.playerId = playerId;
         this.playerName = name;
+        this.playerVisualIdentifier = playerVisualIdentifier;
     }
 
     /**
