@@ -1,5 +1,6 @@
 package dev.davwheat;
 
+import dev.davwheat.exceptions.InvalidActorException;
 import org.jetbrains.annotations.Contract;
 
 public class Card {
@@ -29,7 +30,12 @@ public class Card {
      *
      * @param actor Player to perform actions upon
      */
+    @Contract("null -> fail")
     public void takeAction(Player actor) {
+        if (actor == null) {
+            throw new NullPointerException("actor cannot be null.");
+        }
+
         actor.adjustBankBalance(balanceChange);
 
         if (missNextTurn) {
