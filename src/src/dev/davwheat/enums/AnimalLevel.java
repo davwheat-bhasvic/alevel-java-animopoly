@@ -34,9 +34,7 @@ public enum AnimalLevel {
      * @param value Level integer (0-4)
      * @return
      */
-    @Contract(pure = true)
-    public static @NotNull
-    AnimalLevel fromNumberValue(int value) {
+    public static AnimalLevel fromNumberValue(int value) {
         switch (value) {
             case 0:
                 return AnimalLevel.LEVEL_ZERO;

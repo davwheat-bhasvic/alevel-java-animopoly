@@ -1,7 +1,5 @@
 package dev.davwheat;
 
-import dev.davwheat.exceptions.InvalidActorException;
-
 import javax.naming.NoPermissionException;
 import java.util.ArrayList;
 
@@ -92,7 +90,7 @@ public class Game {
         IOHelper ioHelper = new IOHelper();
 
         int playerCount;
-        this.players = new ArrayList<Player>();
+        this.players = new ArrayList<>();
 
         // Get the number of players playing
         do {
@@ -102,7 +100,7 @@ public class Game {
         // Creates all the players!
         for (int i = 0; i < playerCount; i++) {
             String name = ioHelper.readString("Enter name for Player " + (i + 1), "Invalid name.");
-            System.out.println(String.format("Hello %s!", name));
+            System.out.printf("Hello %s!", name);
             System.out.println("");
 
             char pieceIdentifier = ioHelper.readChar("Choose a character to represent yourself.", "Please enter a character that is A-Z, 0-9, or !£%");

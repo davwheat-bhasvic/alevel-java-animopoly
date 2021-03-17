@@ -15,7 +15,6 @@ public class Card {
      * @param balanceChange Balance change caused by the card
      * @param missNextTurn  Whether to miss next turn because of this card
      */
-    @Contract(pure = true)
     public Card(String cardMessage, double balanceChange, boolean missNextTurn) {
         this.message = cardMessage;
         this.balanceChange = balanceChange;
@@ -30,7 +29,6 @@ public class Card {
      *
      * @param actor Player to perform actions upon
      */
-    @Contract("null -> fail")
     public void takeAction(Player actor) {
         if (actor == null) {
             throw new NullPointerException("actor cannot be null.");
