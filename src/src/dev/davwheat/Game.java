@@ -104,7 +104,9 @@ public class Game {
             System.out.println(String.format("Hello %s!", name);
             System.out.println("");
 
-            this.players.add(new Player(name, i, this));
+            char pieceIdentifier = ioHelper.readChar("Choose a character to represent yourself.", "Please enter a character that is A-Z, 0-9, or !£%");
+
+            this.players.add(new Player(name, i, this, pieceIdentifier));
         }
     }
 }
