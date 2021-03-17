@@ -101,7 +101,7 @@ public class Game {
         // Creates all the players!
         for (int i = 0; i < playerCount; i++) {
             String name = ioHelper.readString("Enter name for Player " + (i + 1), "Invalid name.");
-            System.out.println("Hello " + name + "!");
+            System.out.println(String.format("Hello %s!", name);
             System.out.println("");
 
             this.players.add(new Player(name, i, this));
