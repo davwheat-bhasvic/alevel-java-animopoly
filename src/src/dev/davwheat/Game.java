@@ -36,6 +36,7 @@ public class Game {
     public Game() {
         this.initialiseGame();
         this.gameBoardInstance = new GameBoard(this);
+        this.cardDeck = Deck.createBaseDeck();
     }
 
     /**

@@ -40,6 +40,13 @@ public class Player {
     private final Game gameInstance;
 
     /**
+     * Whether this player should miss their next turn.
+     * <p>
+     * To set this to true, call `makeMissNextTurn()`.
+     */
+    private boolean willMissNextTurn = false;
+
+    /**
      * Create a new instance of Player.
      *
      * @param name                   The Player's name
@@ -139,7 +146,20 @@ public class Player {
         return currentBankBalance < 0;
     }
 
+    /**
+     * Makes this player miss their next turn.
+     */
+    public void makeMissNextTurn() {
+        this.willMissNextTurn = true;
+    }
+
     public void startTurn() {
         // TODO: Implement Player startTurn logic.
+
+        // If they're missing this turn, then just stop here.
+        if (willMissNextTurn) {
+            willMissNextTurn = false;
+            return;
+        }
     }
 }
