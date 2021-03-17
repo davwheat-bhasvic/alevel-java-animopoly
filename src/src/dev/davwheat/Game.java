@@ -102,7 +102,7 @@ public class Game {
         // Creates all the players!
         for (int i = 0; i < playerCount; i++) {
             String name = ioHelper.readString("Enter name for Player " + (i + 1), "Invalid name.");
-            System.out.println(String.format("Hello %s!", name);
+            System.out.println(String.format("Hello %s!", name));
             System.out.println("");
 
             char pieceIdentifier = ioHelper.readChar("Choose a character to represent yourself.", "Please enter a character that is A-Z, 0-9, or !£%");
