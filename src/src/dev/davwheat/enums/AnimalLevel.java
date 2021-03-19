@@ -1,8 +1,5 @@
 package dev.davwheat.enums;
 
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
-
 public enum AnimalLevel {
     LEVEL_ZERO(0),
     LEVEL_ONE(1),

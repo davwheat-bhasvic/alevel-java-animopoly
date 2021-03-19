@@ -1,8 +1,5 @@
 package dev.davwheat;
 
-import dev.davwheat.exceptions.InvalidActorException;
-import org.jetbrains.annotations.Contract;
-
 public class Card {
     public final String message;
     public final double balanceChange;
