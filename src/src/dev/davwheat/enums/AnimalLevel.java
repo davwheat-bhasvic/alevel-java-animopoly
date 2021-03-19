@@ -29,7 +29,7 @@ public enum AnimalLevel {
      * enum values themselves should be good enough for most cases.
      *
      * @param value Level integer (0-4)
-     * @return
+     * @return the level for the provided int
      */
     public static AnimalLevel fromNumberValue(int value) {
         switch (value) {

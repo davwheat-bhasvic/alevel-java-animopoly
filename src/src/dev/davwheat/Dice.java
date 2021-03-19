@@ -22,7 +22,7 @@ public class Dice {
      * To get the total roll, call:
      * rollAllDice().getTotalRoll()
      *
-     * @return
+     * @return the current dice object
      */
     public Dice rollAllDice() {
         /**
