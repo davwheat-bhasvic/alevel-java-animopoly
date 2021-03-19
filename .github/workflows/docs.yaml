@@ -19,7 +19,7 @@ jobs:
       with:
         commit-filter: '[skip ci]'
 
-    - name: Set up JDK 1.11
+    - name: Set up JDK 12
       if: ${{ env.CI_SKIP == 'false' }}
       uses: actions/setup-java@v1
       with:
