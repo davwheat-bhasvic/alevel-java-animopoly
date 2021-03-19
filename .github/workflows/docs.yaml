@@ -1,6 +1,7 @@
 name: docs
 
 on:
+  workflow_dispatch:
   push:
     branches: [ main ]
     paths: [ '**.java' ]
@@ -27,7 +28,7 @@ jobs:
 
     - name: Generate docs
       run: |
-        generate-docs.bat
+        ./generate-docs.bat
 
     - name: Tidy up the javadocs
       if: ${{ env.CI_SKIP == 'false' }}
