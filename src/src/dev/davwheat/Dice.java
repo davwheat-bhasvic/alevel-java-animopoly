@@ -2,6 +2,9 @@ package dev.davwheat;
 
 import java.util.Random;
 
+/**
+ * Dice class. Handles the rolling of dice to decide player movement.
+ */
 public class Dice {
     private int d1 = 0;
     private int d2 = 0;
