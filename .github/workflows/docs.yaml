@@ -8,7 +8,7 @@ on:
 
 jobs:
   generate-docs:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     name: Generate docs
 
     steps:
@@ -28,7 +28,7 @@ jobs:
 
     - name: Generate docs
       run: |
-        ./generate-docs.bat
+        ./generate-docs.sh
 
     - name: Tidy up the javadocs
       if: ${{ env.CI_SKIP == 'false' }}
