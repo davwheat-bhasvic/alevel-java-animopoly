@@ -2,6 +2,9 @@ package dev.davwheat;
 
 import java.util.Random;
 
+/**
+ * Dice class. Handles the rolling of dice to decide player movement.
+ */
 public class Dice {
     private int d1 = 0;
     private int d2 = 0;
@@ -22,7 +25,7 @@ public class Dice {
      * To get the total roll, call:
      * rollAllDice().getTotalRoll()
      *
-     * @return
+     * @return the current dice object
      */
     public Dice rollAllDice() {
         /**

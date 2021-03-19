@@ -1,0 +1,52 @@
+name: docs
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths: [ '**.java' ]
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+    name: Generate docs
+
+    steps:
+    - name: Checkout the repo
+      uses: actions/checkout@v2
+
+    - uses: mstachniuk/ci-skip@v1
+      with:
+        commit-filter: '[skip ci]'
+
+    - name: Set up JDK 12
+      if: ${{ env.CI_SKIP == 'false' }}
+      uses: actions/setup-java@v1
+      with:
+        java-version: 12
+        architecture: x64
+
+    - name: Generate docs
+      run: |
+        ./generate-docs.sh
+
+    - name: Tidy up the javadocs
+      if: ${{ env.CI_SKIP == 'false' }}
+      id: tidy
+      uses: cicirello/javadoc-cleanup@v1.2.0
+      with:
+        path-to-root: javadoc
+
+    - name: Log javadoc-cleanup output
+      if: ${{ env.CI_SKIP == 'false' }}
+      run: |
+        echo "modified-count = ${{ steps.tidy.outputs.modified-count }}"
+
+    - name: Deploy to GitHub Pages 🚀
+      uses: JamesIves/github-pages-deploy-action@3.7.1
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      with:
+        branch: prod
+        folder: javadoc
+        clean: true
+

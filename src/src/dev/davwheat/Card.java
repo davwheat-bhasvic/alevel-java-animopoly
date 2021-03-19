@@ -1,5 +1,9 @@
 package dev.davwheat;
 
+/**
+ * Represents a Card in the Deck. Contains info about the card (message,
+ * balance change as a result), and methods to take the action.
+ */
 public class Card {
     public final String message;
     public final double balanceChange;
