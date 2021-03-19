@@ -2,6 +2,8 @@ package dev.davwheat;
 
 import javax.naming.NoPermissionException;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Function;
 
 /**
  * Manages the game state and runs the game itself.
@@ -92,6 +94,35 @@ public class Game {
         int playerCount;
         this.players = new ArrayList<>();
 
+        /**
+         * We use this to add custom validation for player names to prevent multiple players choosing
+         * the same name.
+         *
+         * This is passed to the IOHelper `readString` method.
+         */
+        final Function<String, Boolean> isValidPlayerName = (String playerName) -> {
+            AtomicBoolean matchesExistingPlayer = new AtomicBoolean(false);
+            this.players.forEach((player) -> {
+                if (playerName.equalsIgnoreCase(player.playerName)) matchesExistingPlayer.set(true);
+            });
+            return !matchesExistingPlayer.get();
+        };
+
+        /**
+         * We use this to add custom validation for player chars to prevent multiple players choosing
+         * the same character to represent themselves with.
+         *
+         * This is passed to the IOHelper `readChar` method.
+         */
+        final Function<Character, Boolean> isValidPlayerChar = (Character playerChar) -> {
+            AtomicBoolean matchesExistingPlayer = new AtomicBoolean(false);
+            this.players.forEach((player) -> {
+                if (playerChar.toString().equalsIgnoreCase(player.playerName.toString()))
+                    matchesExistingPlayer.set(true);
+            });
+            return !matchesExistingPlayer.get();
+        };
+
         // Get the number of players playing
         do {
             playerCount = ioHelper.readInteger("How many players are playing?", "Invalid input -- please enter a whole number");
@@ -99,11 +130,11 @@ public class Game {
 
         // Creates all the players!
         for (int i = 0; i < playerCount; i++) {
-            String name = ioHelper.readString("Enter name for Player " + (i + 1), "Invalid name.");
+            String name = ioHelper.readString("Enter name for Player " + (i + 1), "Please enter a valid name that hasn't been chosen before.", isValidPlayerName);
             System.out.printf("Hello %s!", name);
             System.out.println("");
 
-            char pieceIdentifier = ioHelper.readChar("Choose a character to represent yourself.", "Please enter a character that is A-Z, 0-9, or !£%");
+            char pieceIdentifier = ioHelper.readChar("Choose a character to represent yourself.", "Please enter a character that is A-Z, 0-9, or !£%", isValidPlayerChar);
 
             this.players.add(new Player(name, i, this, pieceIdentifier));
         }

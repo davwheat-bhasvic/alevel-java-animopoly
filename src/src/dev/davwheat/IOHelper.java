@@ -1,6 +1,7 @@
 package dev.davwheat;
 
 import java.util.Scanner;
+import java.util.function.Function;
 
 public class IOHelper {
     Scanner scanner;
@@ -14,13 +15,32 @@ public class IOHelper {
      *
      * @param message     Message to output before input is read
      * @param failMessage Message to output if validation fails
-     * @return string     The inputed string
+     * @return string     The inputted string
      */
     public String readString(String message, String failMessage) {
         while (true) {
             System.out.println(message);
             String input = scanner.nextLine();
             if (validStringInput(input)) {
+                return input;
+            }
+            System.out.println(failMessage);
+        }
+    }
+
+    /**
+     * Reads a string until it passes the validation
+     *
+     * @param message         Message to output before input is read
+     * @param failMessage     Message to output if validation fails
+     * @param customValidator Custom string validator
+     * @return string     The inputted string
+     */
+    public String readString(String message, String failMessage, Function<String, Boolean> customValidator) {
+        while (true) {
+            System.out.println(message);
+            String input = scanner.nextLine();
+            if (validStringInput(input) && customValidator.apply(input)) {
                 return input;
             }
             System.out.println(failMessage);
@@ -45,11 +65,37 @@ public class IOHelper {
         }
     }
 
+    /**
+     * Reads a char until it passes the validation
+     *
+     * @param message     Message to output before input is read
+     * @param failMessage Message to output if validation fails
+     * @return string     The inputted char
+     */
     public char readChar(String message, String failMessage) {
         while (true) {
             System.out.println(message);
             String input = scanner.nextLine();
             if (validCharInput(input)) {
+                return (input).charAt(0);
+            }
+            System.out.println(failMessage);
+        }
+    }
+
+    /**
+     * Reads a char until it passes the validation
+     *
+     * @param message         Message to output before input is read
+     * @param failMessage     Message to output if validation fails
+     * @param customValidator Custom char validator
+     * @return string     The inputted char
+     */
+    public char readChar(String message, String failMessage, Function<Character, Boolean> customValidator) {
+        while (true) {
+            System.out.println(message);
+            String input = scanner.nextLine();
+            if (validCharInput(input) && customValidator.apply(input.charAt(0))) {
                 return (input).charAt(0);
             }
             System.out.println(failMessage);
