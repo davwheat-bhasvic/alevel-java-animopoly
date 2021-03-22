@@ -134,7 +134,7 @@ public class Game {
         };
 
         // Get the number of players playing (must be between 2 and 8)
-        playerCount = ioHelper.readInteger("How many players are playing?", "Invalid input -- please enter a whole number", (Integer count) -> count < 2 || count > 8);
+        playerCount = ioHelper.readInteger("How many players are playing?", "Invalid input -- please enter a whole number between 2 and 8 (inclusive)", (Integer count) -> !(count < 2 || count > 8));
 
         // Creates all the players!
         for (int i = 0; i < playerCount; i++) {
