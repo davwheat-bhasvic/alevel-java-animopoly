@@ -160,7 +160,7 @@ public class Player {
         // If they're missing this turn, then just stop here.
         if (this.willMissNextTurn) {
             this.willMissNextTurn = false;
-            System.out.printf("Player %d (%s) is missing their turn.\n", this.playerId + 1, this.playerName);
+            System.out.printf("\n\nPlayer %d (%s) is missing their turn.\n", this.playerId + 1, this.playerName);
 
             // This should never error... hopefully...
             try {
@@ -169,7 +169,7 @@ public class Player {
             }
         }
 
-        System.out.printf("Player %d (%s) is now playing.\n", this.playerId + 1, this.playerName);
+        System.out.printf("\n\nPlayer %d (%s) is now playing.\n", this.playerId + 1, this.playerName);
         System.out.printf("%s has £%.2f available.\n", this.playerName, this.currentBankBalance);
 
         this.gameInstance.gameBoardInstance.printCurrentBoard();
