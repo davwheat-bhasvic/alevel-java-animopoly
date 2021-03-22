@@ -91,6 +91,16 @@ public class Game {
     public void initialiseGame() {
         final IOHelper ioHelper = new IOHelper();
 
+        this.createPlayers(ioHelper);
+    }
+
+    /**
+     * Internal method to propagate the player list.
+     *
+     * @param ioHelper IOHelper object
+     * @hidden
+     */
+    private void createPlayers(final IOHelper ioHelper) {
         int playerCount;
         this.players = new ArrayList<>();
 
@@ -117,7 +127,7 @@ public class Game {
         final Function<Character, Boolean> isValidPlayerChar = (Character playerChar) -> {
             final AtomicBoolean matchesExistingPlayer = new AtomicBoolean(false);
             this.players.forEach((player) -> {
-                if (playerChar.toString().equalsIgnoreCase(player.playerName))
+                if (playerChar.toString().equalsIgnoreCase(String.valueOf(player.playerVisualIdentifier)))
                     matchesExistingPlayer.set(true);
             });
             return !matchesExistingPlayer.get();
