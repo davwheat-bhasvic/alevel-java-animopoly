@@ -168,4 +168,11 @@ public class Animal extends BoardSpace {
     private boolean isOwnedBy(final Player actor) {
         return (this.getOwner() == actor);
     }
+
+    /**
+     * Prints a visual representation of the card to stdout.
+     */
+    public void printCard() {
+        // TODO: Print card
+    }
 }
