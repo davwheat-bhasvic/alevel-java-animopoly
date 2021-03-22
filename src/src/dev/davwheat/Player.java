@@ -1,5 +1,7 @@
 package dev.davwheat;
 
+import dev.davwheat.enums.BoardSpaceType;
+
 import java.util.Scanner;
 
 /**
@@ -155,7 +157,7 @@ public class Player {
     }
 
     public void startTurn() {
-        // TODO: Implement Player startTurn logic.
+        final IOHelper ioHelper = new IOHelper();
 
         // If they're missing this turn, then just stop here.
         if (this.willMissNextTurn) {
@@ -169,10 +171,12 @@ public class Player {
             }
         }
 
+        final GameBoard gameBoard = this.gameInstance.gameBoardInstance;
+
         System.out.printf("\n\nPlayer %d (%s) is now playing.\n", this.playerId + 1, this.playerName);
         System.out.printf("%s has £%.2f available.\n", this.playerName, this.currentBankBalance);
 
-        this.gameInstance.gameBoardInstance.printCurrentBoard();
+        gameBoard.printCurrentBoard();
 
         System.out.println("Press ENTER to roll the dice.");
         // Wait for an ENTER keypress
@@ -181,7 +185,39 @@ public class Player {
 
         final Dice dice = new Dice();
         final int roll = dice.rollAllDice().getTotalRoll();
-        System.out.printf("You rolled %d.\n", roll);
+        System.out.printf("You rolled %d.\n\n", roll);
+
+        final int beforePos = this.currentSpaceIndex;
+        final BoardSpace currentSpace = this.movePlayer(roll);
+        final int afterPos = this.currentSpaceIndex;
+
+        final boolean justPassedGo = beforePos > afterPos;
+
+        if (justPassedGo) {
+            if (currentSpace.type == BoardSpaceType.START) {
+                System.out.println("You landed on Start! Collect £1000");
+                this.adjustBankBalance(1000);
+            } else {
+                System.out.println("You just passed Start! Collect £500");
+                this.adjustBankBalance(500);
+            }
+        }
+
+        if (currentSpace.type == BoardSpaceType.ANIMAL) {
+            System.out.printf("You landed on \"%s\".\n", currentSpace.displayName);
+
+            final Animal animalSpace = (Animal) currentSpace;
+            animalSpace.printCard();
+
+            final Player owner = animalSpace.getOwner();
+
+            if (owner == null) {
+                // Animal is not owned
+                ioHelper.readChar("%s is not owned. Would you like to buy it? (Y/N)", "Please choose either 'Y' (yes) or 'N' (no).", IOHelper.YesNoCharValidator);
+            }
+        } else if (currentSpace.type == BoardSpaceType.MISS_NEXT_TURN) {
+            System.out.println("You landed on \"Miss next turn\".");
+        }
 
         // This should never error... hopefully...
         try {
