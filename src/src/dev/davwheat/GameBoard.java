@@ -2,6 +2,10 @@ package dev.davwheat;
 
 import java.util.ArrayList;
 
+/**
+ * Class that handles storing and managing the data relating to the board,
+ * including the spaces on the board.
+ */
 public class GameBoard {
     /**
      * Total spaces on the board.

@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
+/**
+ * Manages a deck of Cards, from generation to selection.
+ */
 public class Deck {
     /**
      * If the Deck is locked, no new cards can be added.

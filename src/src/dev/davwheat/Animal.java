@@ -50,6 +50,7 @@ public class Animal extends BoardSpace {
      * @param game        The instance of Game that this Animal belongs to.
      */
     public Animal(String name, double cost, double upgradeCost, double[] stopCosts, int index, Game game) {
+        // Call the parent class constructor
         super(name, index, BoardSpaceType.ANIMAL, true, game);
 
         this.purchaseCost = cost;

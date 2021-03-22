@@ -3,6 +3,9 @@ package dev.davwheat;
 import java.util.Scanner;
 import java.util.function.Function;
 
+/**
+ * Class to make inputting data much easier.
+ */
 public class IOHelper {
     Scanner scanner;
 

@@ -2,6 +2,9 @@ package dev.davwheat;
 
 import dev.davwheat.enums.BoardSpaceType;
 
+/**
+ * A space on the GameBoard which a Player can land on and interact with.
+ */
 public class BoardSpace {
     /**
      * The position of this BoardSpace on the GameBoard.
