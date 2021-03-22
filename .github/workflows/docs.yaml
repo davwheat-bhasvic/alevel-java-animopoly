@@ -42,6 +42,10 @@ jobs:
       run: |
         echo "modified-count = ${{ steps.tidy.outputs.modified-count }}"
 
+    - name: Enforce no Jekyll for GH Pages
+      run: |
+        touch javadoc/.nojekyll
+
     - name: Deploy to GitHub Pages 🚀
       uses: JamesIves/github-pages-deploy-action@3.7.1
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
