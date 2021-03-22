@@ -124,7 +124,7 @@ public class IOHelper {
 
     private boolean validCharInput(final String input) {
         if (input.length() == 1) {
-            return input.matches("[A-Za-z0-9!£%]");
+            return input.matches("[A-Za-z0-9!£%?*]");
         }
 
         return false;
