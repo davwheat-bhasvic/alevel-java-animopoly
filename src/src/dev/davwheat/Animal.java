@@ -104,6 +104,8 @@ public class Animal extends BoardSpace {
 
     /**
      * Attempts to purchase the Animal and make it owned by the Player.
+     * <p>
+     * Also handles the charging of the purchase cost.
      *
      * @param actor Person buying the Animal
      * @throws AnimalAlreadyOwnedException Animal is already owned by another player.
