@@ -8,11 +8,19 @@ import dev.davwheat.exceptions.AnimalUpgradeNotAllowedException;
 
 import javax.naming.NoPermissionException;
 
+/**
+ * Class that represents an Animal, which is a space on the GameBoard.
+ */
 public class Animal extends BoardSpace {
     /**
      * The cost of the Animal to buy.
      */
     public final double purchaseCost;
+
+    /**
+     * The cost to upgrade the Animal to the next level.
+     */
+    public final double upgradeCost;
 
     /**
      * The cost to stop on this Animal for each level.
@@ -34,16 +42,18 @@ public class Animal extends BoardSpace {
     /**
      * Create a new instance of the Animal class.
      *
-     * @param name      Name of the Animal shown to Players.
-     * @param cost      The cost to buy the Animal.
-     * @param stopCosts An array of 5 costs for stopping on the Animal (Level 0 - 4).
-     * @param index     Where the Animal is on the GameBoard.
-     * @param game      The instance of Game that this Animal belongs to.
+     * @param name        Name of the Animal shown to Players.
+     * @param cost        The cost to buy the Animal.
+     * @param upgradeCost The cost to upgrade the Animal.
+     * @param stopCosts   An array of 5 costs for stopping on the Animal (Level 0 - 4).
+     * @param index       Where the Animal is on the GameBoard.
+     * @param game        The instance of Game that this Animal belongs to.
      */
-    public Animal(String name, double cost, double[] stopCosts, int index, Game game) {
+    public Animal(String name, double cost, double upgradeCost, double[] stopCosts, int index, Game game) {
         super(name, index, BoardSpaceType.ANIMAL, true, game);
 
         this.purchaseCost = cost;
+        this.upgradeCost = upgradeCost;
         this.stopCosts = stopCosts;
     }
 
@@ -132,6 +142,8 @@ public class Animal extends BoardSpace {
         // If nothing has been thrown at this point, it should be safe to upgrade
         // ... I hope
 
+        // Charge the actor the upgrade cost
+        actor.adjustBankBalance(-upgradeCost);
         // Increase the level by 1
         currentLevel = AnimalLevel.fromNumberValue(currentLevel.value + 1);
     }
