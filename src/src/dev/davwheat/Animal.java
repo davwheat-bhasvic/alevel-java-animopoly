@@ -143,11 +143,7 @@ public class Animal extends BoardSpace {
      * @return Whether the Player can upgrade the Animal
      */
     public boolean isUpgradable(Player actor) {
-        if (getOwner() == null || !isOwnedBy(actor) || currentLevel == AnimalLevel.LEVEL_FOUR) {
-            return false;
-        }
-
-        return true;
+        return getOwner() != null && isOwnedBy(actor) && currentLevel != AnimalLevel.LEVEL_FOUR;
     }
 
     /**
