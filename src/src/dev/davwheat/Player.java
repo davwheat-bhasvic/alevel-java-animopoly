@@ -1,5 +1,7 @@
 package dev.davwheat;
 
+import java.util.Scanner;
+
 /**
  * A Player who is engaged in the current game.
  */
@@ -172,6 +174,14 @@ public class Player {
 
         this.gameInstance.gameBoardInstance.printCurrentBoard();
 
+        System.out.println("Press ENTER to roll the dice.");
+        // Wait for an ENTER keypress
+        new Scanner(System.in).nextLine();
+        System.out.println("\n... ROLLING ...");
+
+        final Dice dice = new Dice();
+        final int roll = dice.rollAllDice().getTotalRoll();
+        System.out.printf("You rolled %d.\n", roll);
 
         // This should never error... hopefully...
         try {

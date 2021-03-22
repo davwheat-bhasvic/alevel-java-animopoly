@@ -28,14 +28,13 @@ public class Game {
     /**
      * The GameBoard associated with the current game.
      */
-    public final GameBoard gameBoardInstance;
+    public GameBoard gameBoardInstance;
 
     /**
      * Creates an instance of the `Game` class.
      */
     public Game() {
         this.initialiseGame();
-        this.gameBoardInstance = new GameBoard(this);
         this.cardDeck = Deck.createBaseDeck();
     }
 
@@ -91,12 +90,13 @@ public class Game {
     public void initialiseGame() {
         final IOHelper ioHelper = new IOHelper();
 
+        this.gameBoardInstance = new GameBoard(this);
         this.createPlayers(ioHelper);
 
         this.activePlayer = this.players.get(0);
         System.out.printf("Player 1 (%s) will start the game.\n\n", this.activePlayer.playerName);
 
-        while(!this.onlyOnePlayerLeft()) {
+        while (!this.onlyOnePlayerLeft()) {
             this.activePlayer.startTurn();
         }
     }
