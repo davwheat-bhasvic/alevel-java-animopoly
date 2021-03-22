@@ -124,6 +124,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Animal</span>
 extends <a href="BoardSpace.html" title="class in dev.davwheat">BoardSpace</a></pre>
+<div class="block">Class that represents an Animal, which is a space on the GameBoard.</div>
 </li>
 </ul>
 </div>
@@ -160,6 +161,13 @@ extends <a href="BoardSpace.html" title="class in dev.davwheat">BoardSpace</a></
 <div class="block">The cost to stop on this Animal for each level.</div>
 </td>
 </tr>
+<tr class="altColor">
+<td class="colFirst"><code>double</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#upgradeCost">upgradeCost</a></span></code></th>
+<td class="colLast">
+<div class="block">The cost to upgrade the Animal to the next level.</div>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -189,8 +197,9 @@ extends <a href="BoardSpace.html" title="class in dev.davwheat">BoardSpace</a></
 </tr>
 <tbody>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,double,double%5B%5D,int,dev.davwheat.Game)">Animal</a></span>&#8203;(java.lang.String&nbsp;name,
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,double,double,double%5B%5D,int,dev.davwheat.Game)">Animal</a></span>&#8203;(java.lang.String&nbsp;name,
       double&nbsp;cost,
+      double&nbsp;upgradeCost,
       double[]&nbsp;stopCosts,
       int&nbsp;index,
       <a href="Game.html" title="class in dev.davwheat">Game</a>&nbsp;game)</code></th>
@@ -300,6 +309,16 @@ extends <a href="BoardSpace.html" title="class in dev.davwheat">BoardSpace</a></
 <div class="block">The cost of the Animal to buy.</div>
 </li>
 </ul>
+<a id="upgradeCost">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>upgradeCost</h4>
+<pre>public final&nbsp;double upgradeCost</pre>
+<div class="block">The cost to upgrade the Animal to the next level.</div>
+</li>
+</ul>
 <a id="stopCosts">
 <!--   -->
 </a>
@@ -322,7 +341,7 @@ extends <a href="BoardSpace.html" title="class in dev.davwheat">BoardSpace</a></
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(java.lang.String,double,double[],int,dev.davwheat.Game)">
+<a id="&lt;init&gt;(java.lang.String,double,double,double[],int,dev.davwheat.Game)">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -330,6 +349,7 @@ extends <a href="BoardSpace.html" title="class in dev.davwheat">BoardSpace</a></
 <h4>Animal</h4>
 <pre>public&nbsp;Animal&#8203;(java.lang.String&nbsp;name,
               double&nbsp;cost,
+              double&nbsp;upgradeCost,
               double[]&nbsp;stopCosts,
               int&nbsp;index,
               <a href="Game.html" title="class in dev.davwheat">Game</a>&nbsp;game)</pre>
@@ -338,6 +358,7 @@ extends <a href="BoardSpace.html" title="class in dev.davwheat">BoardSpace</a></
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>name</code> - Name of the Animal shown to Players.</dd>
 <dd><code>cost</code> - The cost to buy the Animal.</dd>
+<dd><code>upgradeCost</code> - The cost to upgrade the Animal.</dd>
 <dd><code>stopCosts</code> - An array of 5 costs for stopping on the Animal (Level 0 - 4).</dd>
 <dd><code>index</code> - Where the Animal is on the GameBoard.</dd>
 <dd><code>game</code> - The instance of Game that this Animal belongs to.</dd>
