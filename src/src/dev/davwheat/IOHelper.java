@@ -148,4 +148,14 @@ public class IOHelper {
 
         return false;
     }
+
+    /**
+     * Pre-created custom char validator used to only accept Y/N inputs.
+     */
+    public static Function<Character, Boolean> YesNoCharValidator = (character -> {
+        boolean isYes = character.toString().equalsIgnoreCase("y");
+        boolean isNo = character.toString().equalsIgnoreCase("n");
+
+        return isYes || isNo;
+    });
 }
