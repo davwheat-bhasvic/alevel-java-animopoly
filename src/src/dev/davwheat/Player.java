@@ -56,8 +56,7 @@ public class Player {
      */
     public Player(final String name, final int playerId, final Game game, final char playerVisualIdentifier) {
         this.currentSpaceIndex = 0;
-        // TODO: Check starting balance.
-        this.currentBankBalance = 500;
+        this.currentBankBalance = 2000;
         this.gameInstance = game;
         this.playerId = playerId;
         this.playerName = name;
@@ -159,6 +158,25 @@ public class Player {
         // If they're missing this turn, then just stop here.
         if (this.willMissNextTurn) {
             this.willMissNextTurn = false;
+            System.out.printf("Player %d (%s) is missing their turn.\n", this.playerId + 1, this.playerName);
+
+            // This should never error... hopefully...
+            try {
+                this.gameInstance.endTurn(this);
+            } catch (final Exception ignored) {
+            }
+        }
+
+        System.out.printf("Player %d (%s) is now playing.\n", this.playerId + 1, this.playerName);
+        System.out.printf("%s has £%.2f available.\n", this.playerName, this.currentBankBalance);
+
+        this.gameInstance.gameBoardInstance.printCurrentBoard();
+
+
+        // This should never error... hopefully...
+        try {
+            this.gameInstance.endTurn(this);
+        } catch (final Exception ignored) {
         }
     }
 }

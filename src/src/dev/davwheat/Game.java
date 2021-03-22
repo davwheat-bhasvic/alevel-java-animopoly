@@ -92,6 +92,19 @@ public class Game {
         final IOHelper ioHelper = new IOHelper();
 
         this.createPlayers(ioHelper);
+
+        this.activePlayer = this.players.get(0);
+        System.out.printf("Player 1 (%s) will start the game.\n\n", this.activePlayer.playerName);
+
+        while(!this.onlyOnePlayerLeft()) {
+            this.activePlayer.startTurn();
+        }
+    }
+
+    private boolean onlyOnePlayerLeft() {
+        final int playersLeft = (int) this.players.stream().filter(player -> !player.hasLost()).count();
+
+        return playersLeft <= 1;
     }
 
     /**
@@ -101,7 +114,7 @@ public class Game {
      * @hidden
      */
     private void createPlayers(final IOHelper ioHelper) {
-        int playerCount;
+        final int playerCount;
         this.players = new ArrayList<>();
 
         /*
