@@ -1,6 +1,7 @@
 package dev.davwheat;
 
 import dev.davwheat.enums.BoardSpaceType;
+import dev.davwheat.exceptions.AnimalAlreadyOwnedException;
 
 import java.util.Scanner;
 
@@ -183,12 +184,16 @@ public class Player {
         new Scanner(System.in).nextLine();
         System.out.println("\n... ROLLING ...");
 
-        final Dice dice = new Dice();
-        final int roll = dice.rollAllDice().getTotalRoll();
-        System.out.printf("You rolled %d.\n\n", roll);
+        final Dice dice = new Dice().rollAllDice();
+
+        final int rollTotal = dice.getTotalRoll();
+        final int rollOne = dice.getOneRoll(1);
+        final int rollTwo = dice.getOneRoll(2);
+
+        System.out.printf("You rolled %d and %d for a total of %d.\n\n", rollOne, rollTwo, rollTotal);
 
         final int beforePos = this.currentSpaceIndex;
-        final BoardSpace currentSpace = this.movePlayer(roll);
+        final BoardSpace currentSpace = this.movePlayer(rollTotal);
         final int afterPos = this.currentSpaceIndex;
 
         final boolean justPassedGo = beforePos > afterPos;
@@ -213,7 +218,25 @@ public class Player {
 
             if (owner == null) {
                 // Animal is not owned
-                ioHelper.readChar("%s is not owned. Would you like to buy it? (Y/N)", "Please choose either 'Y' (yes) or 'N' (no).", IOHelper.YesNoCharValidator);
+
+                // Should buy the Animal?
+                final boolean shouldBuy = String.valueOf(ioHelper.readChar(String.format("%s is not owned and costs £%.2f. Would you like to buy it? (Y/N)", animalSpace.displayName, animalSpace.purchaseCost), "Please choose either 'Y' (yes) or 'N' (no).", IOHelper.YesNoCharValidator)).equalsIgnoreCase("y");
+
+                if (shouldBuy) {
+                    try {
+                        animalSpace.purchase(this);
+                        System.out.printf("You now own %s! New balance: £%.2f", animalSpace.displayName, this.currentBankBalance);
+                    } catch (final AnimalAlreadyOwnedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            } else if (owner.equals(this)) {
+                // This is their own property!
+                System.out.println("You own this animal, so stopping here is free.");
+            } else {
+                final double stopCost = animalSpace.getStopCost(this);
+
+                System.out.printf("%s is owned by %s, so you need to pay £%.2f.", animalSpace.displayName, owner.playerName, stopCost);
             }
         } else if (currentSpace.type == BoardSpaceType.MISS_NEXT_TURN) {
             System.out.println("You landed on \"Miss next turn\".");
