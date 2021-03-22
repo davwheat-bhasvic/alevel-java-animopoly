@@ -40,7 +40,7 @@ public class BoardSpace {
      * @param isOwnable   Whether this BoardSpace can be owned by a Player.
      * @param game        The Game that this BoardSpace belongs to.
      */
-    public BoardSpace(String displayName, int index, BoardSpaceType type, boolean isOwnable, Game game) {
+    public BoardSpace(final String displayName, final int index, final BoardSpaceType type, final boolean isOwnable, final Game game) {
         this.index = index;
         this.displayName = displayName;
         this.type = type;

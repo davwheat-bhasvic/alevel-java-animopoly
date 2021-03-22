@@ -16,7 +16,7 @@ public class Card {
      * @param balanceChange Balance change caused by the card
      * @param missNextTurn  Whether to miss next turn because of this card
      */
-    public Card(String cardMessage, double balanceChange, boolean missNextTurn) {
+    public Card(final String cardMessage, final double balanceChange, final boolean missNextTurn) {
         this.message = cardMessage;
         this.balanceChange = balanceChange;
         this.missNextTurn = missNextTurn;
@@ -30,14 +30,14 @@ public class Card {
      *
      * @param actor Player to perform actions upon
      */
-    public void takeAction(Player actor) {
+    public void takeAction(final Player actor) {
         if (actor == null) {
             throw new NullPointerException("actor cannot be null.");
         }
 
-        actor.adjustBankBalance(balanceChange);
+        actor.adjustBankBalance(this.balanceChange);
 
-        if (missNextTurn) {
+        if (this.missNextTurn) {
             actor.makeMissNextTurn();
         }
     }

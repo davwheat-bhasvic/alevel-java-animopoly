@@ -15,7 +15,7 @@ public enum AnimalLevel {
      *
      * @param i Level value
      */
-    AnimalLevel(int i) {
+    AnimalLevel(final int i) {
         this.value = i;
     }
 
@@ -31,20 +31,14 @@ public enum AnimalLevel {
      * @param value Level integer (0-4)
      * @return the level for the provided int
      */
-    public static AnimalLevel fromNumberValue(int value) {
-        switch (value) {
-            case 0:
-                return AnimalLevel.LEVEL_ZERO;
-            case 1:
-                return AnimalLevel.LEVEL_ONE;
-            case 2:
-                return AnimalLevel.LEVEL_TWO;
-            case 3:
-                return AnimalLevel.LEVEL_THREE;
-            case 4:
-                return AnimalLevel.LEVEL_FOUR;
-            default:
-                throw new IllegalArgumentException("Levels only exist for values 0-4.");
-        }
+    public static AnimalLevel fromNumberValue(final int value) {
+        return switch (value) {
+            case 0 -> AnimalLevel.LEVEL_ZERO;
+            case 1 -> AnimalLevel.LEVEL_ONE;
+            case 2 -> AnimalLevel.LEVEL_TWO;
+            case 3 -> AnimalLevel.LEVEL_THREE;
+            case 4 -> AnimalLevel.LEVEL_FOUR;
+            default -> throw new IllegalArgumentException("Levels only exist for values 0-4.");
+        };
     }
 }

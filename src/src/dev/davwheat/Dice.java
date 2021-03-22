@@ -6,8 +6,8 @@ import java.util.Random;
  * Handles the rolling of dice to decide player movement.
  */
 public class Dice {
-    private int d1 = 0;
-    private int d2 = 0;
+    private int d1;
+    private int d2;
 
     /**
      * Gets a random number between 1 and 6.
@@ -15,7 +15,7 @@ public class Dice {
      * @return int (1-6)
      */
     public static int rollDice() {
-        Random random = new Random();
+        final Random random = new Random();
         return random.nextInt(6) + 1;
     }
 
@@ -28,12 +28,13 @@ public class Dice {
      * @return the current dice object
      */
     public Dice rollAllDice() {
-        /**
+        /*
          * We need to roll two dice rather than get
          * a random value between 2-12 due to the
          * different distribution of values.
          */
-        int d1 = rollDice(), d2 = rollDice();
+        final int d1 = Dice.rollDice();
+        final int d2 = Dice.rollDice();
 
         this.d1 = d1;
         this.d2 = d2;
@@ -47,11 +48,11 @@ public class Dice {
      * @return true for double
      */
     public boolean isDouble() {
-        if (d1 == 0 || d2 == 0) {
+        if (this.d1 == 0 || this.d2 == 0) {
             throw new IllegalStateException("Cannot check if a roll is a double before both dice have been rolled.");
         }
 
-        return d1 == d2;
+        return this.d1 == this.d2;
     }
 
     /**
@@ -60,11 +61,11 @@ public class Dice {
      * @return total roll value
      */
     public int getTotalRoll() {
-        if (d1 == 0 || d2 == 0) {
+        if (this.d1 == 0 || this.d2 == 0) {
             throw new IllegalStateException("Cannot get the total roll value before both dice have been rolled.");
         }
 
-        return d1 + d2;
+        return this.d1 + this.d2;
     }
 
     /**
@@ -73,18 +74,11 @@ public class Dice {
      * @param diceNumber Number dice to fetch value from (1 or 2)
      * @return The roll value
      */
-    public int getOneRoll(int diceNumber) {
-        if (diceNumber != 1 && diceNumber != 2) {
-            throw new IllegalArgumentException("Dice number must be 0 or 1.");
-        }
-
-        switch (diceNumber) {
-            default:
-            case 1:
-                return d1;
-
-            case 2:
-                return d2;
-        }
+    public int getOneRoll(final int diceNumber) {
+        return switch (diceNumber) {
+            case 1 -> this.d1;
+            case 2 -> this.d2;
+            default -> throw new IllegalArgumentException("Dice number must be 0 or 1.");
+        };
     }
 }

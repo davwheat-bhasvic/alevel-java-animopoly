@@ -63,21 +63,21 @@ public class Game {
      * @param actor The Player class which is calling this method.
      * @throws NoPermissionException Actor is not the active player
      */
-    public void endTurn(Player actor) throws NoPermissionException {
-        if (actor != activePlayer) {
+    public void endTurn(final Player actor) throws NoPermissionException {
+        if (actor != this.activePlayer) {
             throw new NoPermissionException("Only the active player can end the turn.");
         }
 
         // Get the index of the current active player
-        int activePlayerIndex = players.indexOf(actor);
+        final int activePlayerIndex = this.players.indexOf(actor);
 
-        if (activePlayerIndex + 1 >= players.toArray().length) {
+        if (activePlayerIndex + 1 >= this.players.toArray().length) {
             // This is the last player in the list, we need to wrap
             // around to the start of the list
 
-            activePlayer = players.get(0);
+            this.activePlayer = this.players.get(0);
         } else {
-            activePlayer = players.get(activePlayerIndex + 1);
+            this.activePlayer = this.players.get(activePlayerIndex + 1);
         }
     }
 
@@ -89,35 +89,35 @@ public class Game {
      * @hidden
      */
     public void initialiseGame() {
-        IOHelper ioHelper = new IOHelper();
+        final IOHelper ioHelper = new IOHelper();
 
         int playerCount;
         this.players = new ArrayList<>();
 
-        /**
+        /*
          * We use this to add custom validation for player names to prevent multiple players choosing
          * the same name.
          *
          * This is passed to the IOHelper `readString` method.
          */
         final Function<String, Boolean> isValidPlayerName = (String playerName) -> {
-            AtomicBoolean matchesExistingPlayer = new AtomicBoolean(false);
+            final AtomicBoolean matchesExistingPlayer = new AtomicBoolean(false);
             this.players.forEach((player) -> {
                 if (playerName.equalsIgnoreCase(player.playerName)) matchesExistingPlayer.set(true);
             });
             return !matchesExistingPlayer.get();
         };
 
-        /**
+        /*
          * We use this to add custom validation for player chars to prevent multiple players choosing
          * the same character to represent themselves with.
          *
          * This is passed to the IOHelper `readChar` method.
          */
         final Function<Character, Boolean> isValidPlayerChar = (Character playerChar) -> {
-            AtomicBoolean matchesExistingPlayer = new AtomicBoolean(false);
+            final AtomicBoolean matchesExistingPlayer = new AtomicBoolean(false);
             this.players.forEach((player) -> {
-                if (playerChar.toString().equalsIgnoreCase(player.playerName.toString()))
+                if (playerChar.toString().equalsIgnoreCase(player.playerName))
                     matchesExistingPlayer.set(true);
             });
             return !matchesExistingPlayer.get();
@@ -130,11 +130,11 @@ public class Game {
 
         // Creates all the players!
         for (int i = 0; i < playerCount; i++) {
-            String name = ioHelper.readString("Enter name for Player " + (i + 1), "Please enter a valid name that hasn't been chosen before.", isValidPlayerName);
+            final String name = ioHelper.readString("Enter name for Player " + (i + 1), "Please enter a valid name that hasn't been chosen before.", isValidPlayerName);
             System.out.printf("Hello %s!", name);
-            System.out.println("");
+            System.out.println();
 
-            char pieceIdentifier = ioHelper.readChar("Choose a character to represent yourself.", "Please enter a character that is A-Z, 0-9, or !£%", isValidPlayerChar);
+            final char pieceIdentifier = ioHelper.readChar("Choose a character to represent yourself.", "Please enter a character that is A-Z, 0-9, or !£%", isValidPlayerChar);
 
             this.players.add(new Player(name, i, this, pieceIdentifier));
         }

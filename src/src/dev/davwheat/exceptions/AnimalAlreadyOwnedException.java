@@ -1,7 +1,7 @@
 package dev.davwheat.exceptions;
 
 public class AnimalAlreadyOwnedException extends Exception {
-    public AnimalAlreadyOwnedException(String errorMessage) {
+    public AnimalAlreadyOwnedException(final String errorMessage) {
         super(errorMessage);
     }
 }

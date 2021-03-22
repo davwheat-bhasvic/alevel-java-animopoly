@@ -44,7 +44,7 @@ public class Player {
      * <p>
      * To set this to true, call `makeMissNextTurn()`.
      */
-    private boolean willMissNextTurn = false;
+    private boolean willMissNextTurn;
 
     /**
      * Create a new instance of Player.
@@ -54,7 +54,7 @@ public class Player {
      * @param game                   The current game instance.
      * @param playerVisualIdentifier The visual identifier to use to show the player on the game board.
      */
-    public Player(String name, int playerId, Game game, char playerVisualIdentifier) {
+    public Player(final String name, final int playerId, final Game game, final char playerVisualIdentifier) {
         this.currentSpaceIndex = 0;
         // TODO: Check starting balance.
         this.currentBankBalance = 500;
@@ -70,15 +70,15 @@ public class Player {
      * @param spaces Number of spaces to move.
      * @return The new board space the player is at.
      */
-    public BoardSpace movePlayer(int spaces) {
-        currentSpaceIndex += spaces;
+    public BoardSpace movePlayer(final int spaces) {
+        this.currentSpaceIndex += spaces;
 
         // Ensure the index isn't above 25 or below 0 -- wrap around instead
-        if (currentSpaceIndex > 25 || currentSpaceIndex < 0) {
-            currentSpaceIndex = Math.abs(currentSpaceIndex % 25);
+        if (this.currentSpaceIndex > 25 || this.currentSpaceIndex < 0) {
+            this.currentSpaceIndex = Math.abs(this.currentSpaceIndex % 25);
         }
 
-        return getBoardSpaceAtPlayerPosition();
+        return this.getBoardSpaceAtPlayerPosition();
     }
 
     /**
@@ -87,7 +87,7 @@ public class Player {
      * @return The board space that the player is located on.
      */
     public BoardSpace getBoardSpaceAtPlayerPosition() {
-        return gameInstance.gameBoardInstance.getBoardSpaceAtPosition(currentSpaceIndex);
+        return this.gameInstance.gameBoardInstance.getBoardSpaceAtPosition(this.currentSpaceIndex);
     }
 
     /**
@@ -110,7 +110,7 @@ public class Player {
      * @param reciprocalActionPlayer An player to perform the opposite change on.
      * @return New player balance.
      */
-    public double adjustBankBalance(double change, Player reciprocalActionPlayer) {
+    public double adjustBankBalance(final double change, final Player reciprocalActionPlayer) {
         if (reciprocalActionPlayer == null) {
             throw new NullPointerException("reciprocalActionPlayer must be a valid instance of Player, and not null.");
         }
@@ -130,7 +130,7 @@ public class Player {
      * @param change Amount to change the balance by (+/-)
      * @return New player balance.
      */
-    public double adjustBankBalance(double change) {
+    public double adjustBankBalance(final double change) {
         this.currentBankBalance += change;
         return this.currentBankBalance;
     }
@@ -143,7 +143,7 @@ public class Player {
      * @return Player has lost
      */
     public boolean hasLost() {
-        return currentBankBalance < 0;
+        return this.currentBankBalance < 0;
     }
 
     /**
@@ -157,9 +157,8 @@ public class Player {
         // TODO: Implement Player startTurn logic.
 
         // If they're missing this turn, then just stop here.
-        if (willMissNextTurn) {
-            willMissNextTurn = false;
-            return;
+        if (this.willMissNextTurn) {
+            this.willMissNextTurn = false;
         }
     }
 }

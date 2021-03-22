@@ -32,7 +32,7 @@ public class Animal extends BoardSpace {
     /**
      * The Player who owns this Animal.
      */
-    private Player ownedBy = null;
+    private Player ownedBy;
 
     /**
      * The current level for this Animal.
@@ -49,7 +49,7 @@ public class Animal extends BoardSpace {
      * @param index       Where the Animal is on the GameBoard.
      * @param game        The instance of Game that this Animal belongs to.
      */
-    public Animal(String name, double cost, double upgradeCost, double[] stopCosts, int index, Game game) {
+    public Animal(final String name, final double cost, final double upgradeCost, final double[] stopCosts, final int index, final Game game) {
         // Call the parent class constructor
         super(name, index, BoardSpaceType.ANIMAL, true, game);
 
@@ -64,7 +64,7 @@ public class Animal extends BoardSpace {
      * @return Animal's owner
      */
     public Player getOwner() {
-        return ownedBy;
+        return this.ownedBy;
     }
 
     /**
@@ -73,11 +73,11 @@ public class Animal extends BoardSpace {
      * @param actor The player
      * @return The cost for this player to stop on this animal
      */
-    public double getStopCost(Player actor) {
+    public double getStopCost(final Player actor) {
         // It's free to stop on your own property
-        if (isOwnedBy(actor)) return 0;
+        if (this.isOwnedBy(actor)) return 0;
 
-        double cost = this.stopCosts[this.currentLevel.value];
+        final double cost = this.stopCosts[this.currentLevel.value];
 
         if (cost == 0) {
             throw new IllegalStateException("stopCost at currentLevel is 0");
@@ -91,7 +91,7 @@ public class Animal extends BoardSpace {
      *
      * @param actor Player
      */
-    public void payForStop(Player actor) {
+    public void payForStop(final Player actor) {
         if (this.isOwnedBy(actor)) {
             // Don't charge the owner of this Animal
             return;
@@ -99,7 +99,7 @@ public class Animal extends BoardSpace {
 
         // Charge the person stopping, and apply the
         // opposite action to the Animal owner.
-        actor.adjustBankBalance(-getStopCost(actor), this.getOwner());
+        actor.adjustBankBalance(-this.getStopCost(actor), this.getOwner());
     }
 
     /**
@@ -108,13 +108,13 @@ public class Animal extends BoardSpace {
      * @param actor Person buying the Animal
      * @throws AnimalAlreadyOwnedException Animal is already owned by another player.
      */
-    public void purchase(Player actor) throws AnimalAlreadyOwnedException {
+    public void purchase(final Player actor) throws AnimalAlreadyOwnedException {
         if (this.getOwner() != null) {
             throw new AnimalAlreadyOwnedException("Cannot purchase an animal if it is already owned.");
         }
 
         // Charge the player
-        actor.adjustBankBalance(-purchaseCost);
+        actor.adjustBankBalance(-this.purchaseCost);
 
         // Set the owner
         this.ownedBy = actor;
@@ -131,12 +131,12 @@ public class Animal extends BoardSpace {
      * @throws NoPermissionException            Thrown when a Player other than the Animal owner attempts to upgrade the Animal.
      * @throws AnimalUpgradeNotAllowedException Thrown when an Animal is already at the maximum level.
      */
-    public void upgrade(Player actor) throws AnimalNotOwnedException, NoPermissionException, AnimalUpgradeNotAllowedException {
-        if (getOwner() == null) {
+    public void upgrade(final Player actor) throws AnimalNotOwnedException, NoPermissionException, AnimalUpgradeNotAllowedException {
+        if (this.getOwner() == null) {
             throw new AnimalNotOwnedException("An animal cannot be upgraded if it is not owned. You should always check if an upgrade is possible using `isUpgradable(player)` before attempting an upgrade.");
-        } else if (!isOwnedBy(actor)) {
+        } else if (!this.isOwnedBy(actor)) {
             throw new NoPermissionException("Only the Animal owner has permission to upgrade the animal. You should always check if an upgrade is possible using `isUpgradable(player)` before attempting an upgrade.");
-        } else if (currentLevel == AnimalLevel.LEVEL_FOUR) {
+        } else if (this.currentLevel == AnimalLevel.LEVEL_FOUR) {
             throw new AnimalUpgradeNotAllowedException("Animal is already at the maximum level. You should always check if an upgrade is possible using `isUpgradable(player)` before attempting an upgrade.");
         }
 
@@ -144,9 +144,9 @@ public class Animal extends BoardSpace {
         // ... I hope
 
         // Charge the actor the upgrade cost
-        actor.adjustBankBalance(-upgradeCost);
+        actor.adjustBankBalance(-this.upgradeCost);
         // Increase the level by 1
-        currentLevel = AnimalLevel.fromNumberValue(currentLevel.value + 1);
+        this.currentLevel = AnimalLevel.fromNumberValue(this.currentLevel.value + 1);
     }
 
     /**
@@ -155,8 +155,8 @@ public class Animal extends BoardSpace {
      * @param actor Player attempting the upgrade
      * @return Whether the Player can upgrade the Animal
      */
-    public boolean isUpgradable(Player actor) {
-        return getOwner() != null && isOwnedBy(actor) && currentLevel != AnimalLevel.LEVEL_FOUR;
+    public boolean isUpgradable(final Player actor) {
+        return this.getOwner() != null && this.isOwnedBy(actor) && this.currentLevel != AnimalLevel.LEVEL_FOUR;
     }
 
     /**
@@ -165,7 +165,7 @@ public class Animal extends BoardSpace {
      * @param actor The player
      * @return If the player owns the animal
      */
-    private boolean isOwnedBy(Player actor) {
-        return (getOwner() == actor);
+    private boolean isOwnedBy(final Player actor) {
+        return (this.getOwner() == actor);
     }
 }

@@ -3,7 +3,6 @@ package dev.davwheat;
 import dev.davwheat.exceptions.DeckIsLockedException;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 /**
@@ -13,7 +12,7 @@ public class Deck {
     /**
      * If the Deck is locked, no new cards can be added.
      */
-    private boolean isLocked = false;
+    private boolean isLocked;
 
     /**
      * ArrayList of all cards in the Deck.
@@ -34,7 +33,7 @@ public class Deck {
      * @return the Deck after the card has been added
      * @throws DeckIsLockedException The Deck has been locked. No more modifications can be made.
      */
-    public Deck addCard(Card card) throws DeckIsLockedException {
+    public Deck addCard(final Card card) throws DeckIsLockedException {
         if (this.isLocked) {
             throw new DeckIsLockedException("Deck is locked. No modifications are allowed.");
         }
@@ -61,7 +60,7 @@ public class Deck {
      * @return the Deck
      */
     public Deck shuffleCards() {
-        Collections.shuffle(allCards);
+        Collections.shuffle(this.allCards);
         return this;
     }
 
@@ -72,11 +71,11 @@ public class Deck {
      */
     public Card takeCard() {
         // Get the top card
-        Card card = allCards.get(0);
+        final Card card = this.allCards.get(0);
         // Remove the top card
-        allCards.remove(0);
+        this.allCards.remove(0);
         // Push the card to the bottom of the pile
-        allCards.add(card);
+        this.allCards.add(card);
 
         return card;
     }
@@ -87,7 +86,7 @@ public class Deck {
      * @return the Deck
      */
     public static Deck createBaseDeck() {
-        Deck deck = new Deck();
+        final Deck deck = new Deck();
 
         try {
             deck.addCard(new Card("Your animal won second prize in a beauty contest. Collect £50.", 50, false))
@@ -103,7 +102,7 @@ public class Deck {
                     .addCard(new Card("One of your animals has died. Miss your next turn.", 0, true))
                     .lock()
                     .shuffleCards();
-        } catch (DeckIsLockedException e) {
+        } catch (final DeckIsLockedException e) {
             // This should never happen, but we need to handle it so Java doesn't have a fit.
             throw new RuntimeException("Deck was somehow locked! Argh!");
         }

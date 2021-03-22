@@ -1,6 +1,6 @@
 package dev.davwheat;
 
-import java.util.ArrayList;
+import dev.davwheat.enums.BoardSpaceType;
 
 /**
  * Class that handles storing and managing the data relating to the board,
@@ -31,8 +31,10 @@ public class GameBoard {
      *
      * @param gameInstance The instance of Game to which this board is related.
      */
-    public GameBoard(Game gameInstance) {
+    public GameBoard(final Game gameInstance) {
         this.gameInstance = gameInstance;
+
+        this.createBoard();
     }
 
     /**
@@ -45,12 +47,12 @@ public class GameBoard {
         System.out.println("*****  TO DO  *****");
     }
 
-    public BoardSpace getBoardSpaceAtPosition(int index) {
-        if (index < 0 || index >= totalSpaces) {
+    public BoardSpace getBoardSpaceAtPosition(final int index) {
+        if (index < 0 || index >= this.totalSpaces) {
             throw new IllegalArgumentException("Index provided is outside allowed range (0 to " + (this.totalSpaces - 1) + ").");
         }
 
-        BoardSpace bs = allBoardSpaces[index];
+        final BoardSpace bs = this.allBoardSpaces[index];
 
         if (bs == null) {
             throw new NullPointerException("BoardSpace at index " + index + " is null.");

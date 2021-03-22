@@ -1,7 +1,7 @@
 package dev.davwheat.exceptions;
 
 public class InvalidActorException extends Exception {
-    public InvalidActorException(String errorMessage) {
+    public InvalidActorException(final String errorMessage) {
         super(errorMessage);
     }
 }
