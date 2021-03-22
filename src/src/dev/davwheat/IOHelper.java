@@ -69,6 +69,25 @@ public class IOHelper {
     }
 
     /**
+     * Reads an int until it passes the validation
+     *
+     * @param message         Message to output before input is read
+     * @param failMessage     Message to output if validation fails
+     * @param customValidator Custom validator
+     * @return The inputted integer
+     */
+    public int readInteger(final String message, final String failMessage, final Function<Integer, Boolean> customValidator) {
+        while (true) {
+            System.out.println(message);
+            final String input = this.scanner.nextLine();
+            if (this.validIntInput(input) && customValidator.apply(Integer.parseInt(input))) {
+                return Integer.parseInt(input);
+            }
+            System.out.println(failMessage);
+        }
+    }
+
+    /**
      * Reads a char until it passes the validation
      *
      * @param message     Message to output before input is read
