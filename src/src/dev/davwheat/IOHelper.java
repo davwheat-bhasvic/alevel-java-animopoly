@@ -150,6 +150,15 @@ public class IOHelper {
     }
 
     /**
+     * Pauses execution until the user presses ENTER.
+     * <p>
+     * Does not display any prompts, so ensure that you inform the user that they should press ENTER before you call this.
+     */
+    public void pressEnterToContinue() {
+        this.scanner.nextLine();
+    }
+
+    /**
      * Pre-created custom char validator used to only accept Y/N inputs.
      */
     public static Function<Character, Boolean> YesNoCharValidator = (character -> {
