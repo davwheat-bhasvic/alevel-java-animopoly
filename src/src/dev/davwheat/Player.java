@@ -1,6 +1,7 @@
 package dev.davwheat;
 
 import dev.davwheat.enums.BoardSpaceType;
+import dev.davwheat.enums.Color;
 import dev.davwheat.exceptions.AnimalAlreadyOwnedException;
 
 import java.util.Scanner;
@@ -174,16 +175,17 @@ public class Player {
 
         final GameBoard gameBoard = this.gameInstance.gameBoardInstance;
 
+        System.out.printf("%s%s", Color.RESET, Color.WHITE_BOLD_BRIGHT);
         System.out.printf("\n\nPlayer %d (%s) is now playing.\n", this.playerId + 1, this.playerName);
-        System.out.printf("%s has £%.2f available.\n", this.playerName, this.currentBankBalance);
+        System.out.printf("%s", Color.RESET);
+        System.out.printf("%s has %s£%.2f%s available.\n", this.playerName, Color.GREEN_BOLD_BRIGHT, this.currentBankBalance, Color.RESET);
 
         gameBoard.printCurrentBoard();
 
         System.out.println("Press ENTER to roll the dice.");
-        // Wait for an ENTER keypress
-        new Scanner(System.in).nextLine();
-        System.out.println("\n... ROLLING ...");
+        ioHelper.pressEnterToContinue();
 
+        System.out.println("... ROLLING ...");
         final Dice dice = new Dice().rollAllDice();
 
         final int rollTotal = dice.getTotalRoll();
@@ -236,7 +238,7 @@ public class Player {
             } else {
                 final double stopCost = animalSpace.getStopCost(this);
 
-                System.out.printf("%s is owned by %s, so you need to pay £%.2f.", animalSpace.displayName, owner.playerName, stopCost);
+                System.out.printf("%s is owned by %s, so you need to pay them £%.2f.", animalSpace.displayName, owner.playerName, stopCost);
             }
         } else if (currentSpace.type == BoardSpaceType.MISS_NEXT_TURN) {
             System.out.println("You landed on \"Miss next turn\".");
