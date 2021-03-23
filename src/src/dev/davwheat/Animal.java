@@ -2,11 +2,15 @@ package dev.davwheat;
 
 import dev.davwheat.enums.AnimalLevel;
 import dev.davwheat.enums.BoardSpaceType;
+import dev.davwheat.enums.Color;
 import dev.davwheat.exceptions.AnimalAlreadyOwnedException;
 import dev.davwheat.exceptions.AnimalNotOwnedException;
 import dev.davwheat.exceptions.AnimalUpgradeNotAllowedException;
 
 import javax.naming.NoPermissionException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Class that represents an Animal, which is a space on the GameBoard.
@@ -175,6 +179,37 @@ public class Animal extends BoardSpace {
      * Prints a visual representation of the card to stdout.
      */
     public void printCard() {
-        // TODO: Print card
+        final int cardInnerWidth = 24;
+        final String cardInnerFrame = "━".repeat(cardInnerWidth);
+
+        final ArrayList<String> displayNameLines = StringTools.centreText(StringTools.splitStringAtWhitespace(this.displayName, cardInnerWidth), cardInnerWidth);
+
+        // Frame characters from here:
+        // https://en.wikipedia.org/wiki/Box-drawing_character
+
+        System.out.printf("┏%s┓\n", cardInnerFrame);
+        displayNameLines.forEach(s -> System.out.printf("┃%s┃\n", s));
+        System.out.printf("┣%s┫\n", cardInnerFrame);
+        System.out.printf("┃%s%s%s┃\n", Color.WHITE_BOLD_BRIGHT, StringTools.centreText("Stop costs", cardInnerWidth), Color.RESET);
+
+        // Prints stop costs
+        final AtomicInteger level = new AtomicInteger();
+        Arrays.stream(this.stopCosts).forEach(cost -> {
+            // Whether this line of text represents the current level of the Animal.
+            final boolean isThisCurrentLevel = this.getOwner() != null && this.currentLevel.value == level.get();
+
+            System.out.printf("┃%s%s%s┃\n", isThisCurrentLevel ? Color.WHITE_BOLD_BRIGHT : "", StringTools.centreText(String.format("Level %d - £%.2f", level.get(), cost), cardInnerWidth), Color.RESET);
+            level.getAndIncrement();
+        });
+
+        System.out.printf("┣%s┫\n", cardInnerFrame);
+
+        if (this.getOwner() == null) {
+            System.out.printf("┃%s┃\n", StringTools.centreText(String.format("Purchase for £%.2f", this.purchaseCost), cardInnerWidth));
+        } else {
+            System.out.printf("┃%s┃\n", StringTools.centreText(String.format("Owned by %s", this.getOwner().playerName), cardInnerWidth));
+        }
+
+        System.out.printf("┗%s┛\n", cardInnerFrame);
     }
 }
