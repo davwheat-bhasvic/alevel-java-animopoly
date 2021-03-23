@@ -30,7 +30,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -198,6 +198,13 @@ extends java.lang.Object</pre>
 </tr>
 <tbody>
 <tr class="altColor" id="i0">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#pressEnterToContinue()">pressEnterToContinue</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Pauses execution until the user presses ENTER.</div>
+</td>
+</tr>
+<tr class="rowColor" id="i1">
 <td class="colFirst"><code>char</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#readChar(java.lang.String,java.lang.String)">readChar</a></span>&#8203;(java.lang.String&nbsp;message,
         java.lang.String&nbsp;failMessage)</code></th>
@@ -205,7 +212,7 @@ extends java.lang.Object</pre>
 <div class="block">Reads a char until it passes the validation</div>
 </td>
 </tr>
-<tr class="rowColor" id="i1">
+<tr class="altColor" id="i2">
 <td class="colFirst"><code>char</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#readChar(java.lang.String,java.lang.String,java.util.function.Function)">readChar</a></span>&#8203;(java.lang.String&nbsp;message,
         java.lang.String&nbsp;failMessage,
@@ -214,7 +221,7 @@ extends java.lang.Object</pre>
 <div class="block">Reads a char until it passes the validation</div>
 </td>
 </tr>
-<tr class="altColor" id="i2">
+<tr class="rowColor" id="i3">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#readInteger(java.lang.String,java.lang.String)">readInteger</a></span>&#8203;(java.lang.String&nbsp;message,
            java.lang.String&nbsp;failMessage)</code></th>
@@ -222,7 +229,7 @@ extends java.lang.Object</pre>
 <div class="block">Reads an int until it passes the validation</div>
 </td>
 </tr>
-<tr class="rowColor" id="i3">
+<tr class="altColor" id="i4">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#readInteger(java.lang.String,java.lang.String,java.util.function.Function)">readInteger</a></span>&#8203;(java.lang.String&nbsp;message,
            java.lang.String&nbsp;failMessage,
@@ -231,7 +238,7 @@ extends java.lang.Object</pre>
 <div class="block">Reads an int until it passes the validation</div>
 </td>
 </tr>
-<tr class="altColor" id="i4">
+<tr class="rowColor" id="i5">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#readString(java.lang.String,java.lang.String)">readString</a></span>&#8203;(java.lang.String&nbsp;message,
           java.lang.String&nbsp;failMessage)</code></th>
@@ -239,7 +246,7 @@ extends java.lang.Object</pre>
 <div class="block">Reads a string until it passes the validation</div>
 </td>
 </tr>
-<tr class="rowColor" id="i5">
+<tr class="altColor" id="i6">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#readString(java.lang.String,java.lang.String,java.util.function.Function)">readString</a></span>&#8203;(java.lang.String&nbsp;message,
           java.lang.String&nbsp;failMessage,
@@ -411,7 +418,7 @@ extends java.lang.Object</pre>
 <a id="readChar(java.lang.String,java.lang.String,java.util.function.Function)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>readChar</h4>
 <pre class="methodSignature">public&nbsp;char&nbsp;readChar&#8203;(java.lang.String&nbsp;message,
@@ -426,6 +433,18 @@ extends java.lang.Object</pre>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>string     The inputted char</dd>
 </dl>
+</li>
+</ul>
+<a id="pressEnterToContinue()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>pressEnterToContinue</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;pressEnterToContinue()</pre>
+<div class="block">Pauses execution until the user presses ENTER.
+ <p>
+ Does not display any prompts, so ensure that you inform the user that they should press ENTER before you call this.</div>
 </li>
 </ul>
 </li>
