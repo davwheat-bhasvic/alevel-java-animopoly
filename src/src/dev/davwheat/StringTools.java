@@ -9,8 +9,7 @@ import java.util.ArrayList;
  */
 public class StringTools {
     /**
-     * Takes a list of strings as input, and a maximum length, then centres the text within that length,
-     * splitting at whitespace where necessary.
+     * Takes a list of strings as input, and a maximum length, then centres the text within that length.
      * <p>
      * If there is an odd amount of spacing required, we favour extra spacing on the left.
      *
@@ -22,15 +21,29 @@ public class StringTools {
         final ArrayList<String> newList = new ArrayList<>();
 
         text.forEach(s -> {
-            final int charsToFill = width - s.length();
-            final int charsLeft = (int) Math.ceil(charsToFill / 2d);
-            final int charsRight = (int) Math.floor(charsToFill / 2d);
-
-            final String finalLine = String.format("%s%s%s", " ".repeat(charsLeft), s, " ".repeat(charsRight));
-            newList.add(finalLine);
+            newList.add(StringTools.centreText(s, width));
         });
 
         return newList;
+    }
+
+    /**
+     * Takes a string as input, and a maximum length, then centres the text within that length.
+     * <p>
+     * If there is an odd amount of spacing required, we favour extra spacing on the left.
+     * <p>
+     * If the input is longer than the width, nothing will be done.
+     *
+     * @param text  input string to be centred
+     * @param width the maximum length per line
+     * @return centred string
+     */
+    public static String centreText(final String text, final int width) {
+        final int charsToFill = width - text.length();
+        final int charsLeft = (int) Math.ceil(charsToFill / 2d);
+        final int charsRight = (int) Math.floor(charsToFill / 2d);
+
+        return String.format("%s%s%s", " ".repeat(charsLeft), text, " ".repeat(charsRight));
     }
 
     /**
