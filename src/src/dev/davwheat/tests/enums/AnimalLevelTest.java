@@ -51,11 +51,11 @@ class AnimalLevelTest {
 
     @Test
     @Order(4)
-    @DisplayName("Correct Level for 4.")
+    @DisplayName("Fails for invalid levels.")
     void providesCorrectLevelForFour() {
-        assertEquals(
-                AnimalLevel.LEVEL_FOUR,
-                AnimalLevel.fromNumberValue(4)
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> AnimalLevel.fromNumberValue(4)
         );
     }
 }

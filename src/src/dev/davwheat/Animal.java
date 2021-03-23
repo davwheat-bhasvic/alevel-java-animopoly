@@ -25,7 +25,7 @@ public class Animal extends BoardSpace {
     /**
      * The cost to stop on this Animal for each level.
      * <p>
-     * Contains indexes 0 to 4 (inclusive) for Levels 0 to 4.
+     * Contains indexes 0 to 3 (inclusive) for Levels 0 to 3.
      */
     public final double[] stopCosts;
 
@@ -45,7 +45,7 @@ public class Animal extends BoardSpace {
      * @param name        Name of the Animal shown to Players.
      * @param cost        The cost to buy the Animal.
      * @param upgradeCost The cost to upgrade the Animal.
-     * @param stopCosts   An array of 5 costs for stopping on the Animal (Level 0 - 4).
+     * @param stopCosts   An array of 4 costs for stopping on the Animal (Level 0 - 3).
      * @param index       Where the Animal is on the GameBoard.
      * @param game        The instance of Game that this Animal belongs to.
      */
@@ -138,7 +138,7 @@ public class Animal extends BoardSpace {
             throw new AnimalNotOwnedException("An animal cannot be upgraded if it is not owned. You should always check if an upgrade is possible using `isUpgradable(player)` before attempting an upgrade.");
         } else if (!this.isOwnedBy(actor)) {
             throw new NoPermissionException("Only the Animal owner has permission to upgrade the animal. You should always check if an upgrade is possible using `isUpgradable(player)` before attempting an upgrade.");
-        } else if (this.currentLevel == AnimalLevel.LEVEL_FOUR) {
+        } else if (this.currentLevel == AnimalLevel.LEVEL_THREE) {
             throw new AnimalUpgradeNotAllowedException("Animal is already at the maximum level. You should always check if an upgrade is possible using `isUpgradable(player)` before attempting an upgrade.");
         }
 
@@ -158,7 +158,7 @@ public class Animal extends BoardSpace {
      * @return Whether the Player can upgrade the Animal
      */
     public boolean isUpgradable(final Player actor) {
-        return this.getOwner() != null && this.isOwnedBy(actor) && this.currentLevel != AnimalLevel.LEVEL_FOUR;
+        return this.getOwner() != null && this.isOwnedBy(actor) && this.currentLevel != AnimalLevel.LEVEL_THREE;
     }
 
     /**
