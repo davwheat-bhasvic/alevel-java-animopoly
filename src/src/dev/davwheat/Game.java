@@ -128,6 +128,8 @@ public class Game {
          * This is passed to the IOHelper `readString` method.
          */
         final Function<String, Boolean> isValidPlayerName = (String playerName) -> {
+            if (playerName.length() > 12) return false;
+
             final AtomicBoolean matchesExistingPlayer = new AtomicBoolean(false);
             this.players.forEach((player) -> {
                 if (playerName.equalsIgnoreCase(player.playerName)) matchesExistingPlayer.set(true);
@@ -155,7 +157,7 @@ public class Game {
 
         // Creates all the players!
         for (int i = 0; i < playerCount; i++) {
-            final String name = ioHelper.readString("Enter name for Player " + (i + 1), "Please enter a valid name that hasn't been chosen by another player.", isValidPlayerName);
+            final String name = ioHelper.readString("Enter name for Player " + (i + 1), "Please enter a name that hasn't been chosen by another player, and no more than 12 characters long.", isValidPlayerName);
             System.out.printf("Hello %s!", name);
             System.out.println();
 
