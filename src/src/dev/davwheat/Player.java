@@ -238,7 +238,12 @@ public class Player {
             } else {
                 final double stopCost = animalSpace.getStopCost(this);
 
-                System.out.printf("%s is owned by %s, so you need to pay them £%.2f.", animalSpace.displayName, owner.playerName, stopCost);
+                System.out.printf("%s is owned by %s, so you need to %spay them £%.2f%s.\n", animalSpace.displayName, owner.playerName, Color.RED_BOLD_BRIGHT, stopCost, Color.RESET);
+                System.out.println("Press ENTER to continue.");
+                ioHelper.pressEnterToContinue();
+
+                animalSpace.payForStop(this);
+                System.out.printf("Your new balance is %s£%.2f%s.\n", Color.GREEN_BOLD_BRIGHT, this.currentBankBalance, Color.RESET);
             }
         } else if (currentSpace.type == BoardSpaceType.MISS_NEXT_TURN) {
             System.out.println("You landed on \"Miss next turn\".");
