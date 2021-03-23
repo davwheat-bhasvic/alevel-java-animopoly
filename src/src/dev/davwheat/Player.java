@@ -215,6 +215,7 @@ public class Player {
 
             final Animal animalSpace = (Animal) currentSpace;
             animalSpace.printCard();
+            System.out.println();
 
             final Player owner = animalSpace.getOwner();
 
@@ -227,14 +228,14 @@ public class Player {
                 if (shouldBuy) {
                     try {
                         animalSpace.purchase(this);
-                        System.out.printf("You now own %s! New balance: £%.2f", animalSpace.displayName, this.currentBankBalance);
+                        System.out.printf("%sYou now own %s! New balance: £%.2f%s", Color.BLUE_BOLD, animalSpace.displayName, this.currentBankBalance, Color.RESET);
                     } catch (final AnimalAlreadyOwnedException e) {
                         e.printStackTrace();
                     }
                 }
             } else if (owner.equals(this)) {
                 // This is their own property!
-                System.out.println("You own this animal, so stopping here is free.");
+                System.out.printf("%sYou own this animal, so stopping here is free.%s\n", Color.BLUE_BOLD, Color.RESET);
             } else {
                 final double stopCost = animalSpace.getStopCost(this);
 
