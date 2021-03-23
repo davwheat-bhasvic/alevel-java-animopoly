@@ -70,13 +70,17 @@ public class Game {
         // Get the index of the current active player
         final int activePlayerIndex = this.players.indexOf(actor);
 
-        if (activePlayerIndex + 1 >= this.players.toArray().length) {
-            // This is the last player in the list, we need to wrap
-            // around to the start of the list
+        boolean hasPlayerLost = true;
 
-            this.activePlayer = this.players.get(0);
-        } else {
-            this.activePlayer = this.players.get(activePlayerIndex + 1);
+        while (hasPlayerLost) {
+            if (activePlayerIndex + 1 >= this.players.toArray().length) {
+                // This is the last player in the list, we need to wrap
+                // around to the start of the list
+                this.activePlayer = this.players.get(0);
+            } else {
+                this.activePlayer = this.players.get(activePlayerIndex + 1);
+            }
+            hasPlayerLost = this.activePlayer.hasLost();
         }
     }
 
