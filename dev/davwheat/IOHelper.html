@@ -30,7 +30,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -143,6 +143,11 @@ extends java.lang.Object</pre>
 </tr>
 <tbody>
 <tr class="altColor">
+<td class="colFirst"><code>protected java.util.Scanner</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#scanner">scanner</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>static java.util.function.Function&lt;java.lang.Character,&#8203;java.lang.Boolean&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#YesNoCharValidator">YesNoCharValidator</a></span></code></th>
 <td class="colLast">
@@ -255,6 +260,13 @@ extends java.lang.Object</pre>
 <div class="block">Reads a string until it passes the validation</div>
 </td>
 </tr>
+<tr class="rowColor" id="i7">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setScanner(java.util.Scanner)">setScanner</a></span>&#8203;(java.util.Scanner&nbsp;scanner)</code></th>
+<td class="colLast">
+<div class="block">Used in tests to allow a custom Scanner to be set.</div>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -282,6 +294,15 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Field Detail</h3>
+<a id="scanner">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>scanner</h4>
+<pre>protected&nbsp;java.util.Scanner scanner</pre>
+</li>
+</ul>
 <a id="YesNoCharValidator">
 <!--   -->
 </a>
@@ -321,6 +342,24 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a id="setScanner(java.util.Scanner)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setScanner</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setScanner&#8203;(java.util.Scanner&nbsp;scanner)</pre>
+<div class="block">Used in tests to allow a custom Scanner to be set.
+ <p>
+ This allows us to provide custom input to the IOHelper functions.
+ <p>
+ <b>Do not use this in normal code.</b></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>scanner</code> - custom scanner</dd>
+</dl>
+</li>
+</ul>
 <a id="readString(java.lang.String,java.lang.String)">
 <!--   -->
 </a>

@@ -30,7 +30,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":9,"i1":9,"i2":9};
+var data = {"i0":9,"i1":9,"i2":9,"i3":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -169,22 +169,29 @@ extends java.lang.Object</pre>
 </tr>
 <tbody>
 <tr class="altColor" id="i0">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#centreText(java.lang.String,int)">centreText</a></span>&#8203;(java.lang.String&nbsp;text,
+          int&nbsp;width)</code></th>
+<td class="colLast">
+<div class="block">Takes a string as input, and a maximum length, then centres the text within that length.</div>
+</td>
+</tr>
+<tr class="rowColor" id="i1">
 <td class="colFirst"><code>static java.util.ArrayList&lt;java.lang.String&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#centreText(java.util.List,int)">centreText</a></span>&#8203;(java.util.List&lt;java.lang.String&gt;&nbsp;text,
           int&nbsp;width)</code></th>
 <td class="colLast">
-<div class="block">Takes a list of strings as input, and a maximum length, then centres the text within that length,
- splitting at whitespace where necessary.</div>
+<div class="block">Takes a list of strings as input, and a maximum length, then centres the text within that length.</div>
 </td>
 </tr>
-<tr class="rowColor" id="i1">
+<tr class="altColor" id="i2">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#concatenateListOfLines(java.util.List)">concatenateListOfLines</a></span>&#8203;(java.util.List&lt;java.lang.String&gt;&nbsp;lines)</code></th>
 <td class="colLast">
 <div class="block">Joins an ArrayList of Strings into a single string, separated by new lines.</div>
 </td>
 </tr>
-<tr class="altColor" id="i2">
+<tr class="rowColor" id="i3">
 <td class="colFirst"><code>static java.util.List&lt;java.lang.String&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#splitStringAtWhitespace(java.lang.String,int)">splitStringAtWhitespace</a></span>&#8203;(java.lang.String&nbsp;text,
                        int&nbsp;width)</code></th>
@@ -247,8 +254,7 @@ extends java.lang.Object</pre>
 <h4>centreText</h4>
 <pre class="methodSignature">public static&nbsp;java.util.ArrayList&lt;java.lang.String&gt;&nbsp;centreText&#8203;(java.util.List&lt;java.lang.String&gt;&nbsp;text,
                                                                int&nbsp;width)</pre>
-<div class="block">Takes a list of strings as input, and a maximum length, then centres the text within that length,
- splitting at whitespace where necessary.
+<div class="block">Takes a list of strings as input, and a maximum length, then centres the text within that length.
  <p>
  If there is an odd amount of spacing required, we favour extra spacing on the left.</div>
 <dl>
@@ -257,6 +263,28 @@ extends java.lang.Object</pre>
 <dd><code>width</code> - the maximum length per line</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>centred, possibly multi-lined, string</dd>
+</dl>
+</li>
+</ul>
+<a id="centreText(java.lang.String,int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>centreText</h4>
+<pre class="methodSignature">public static&nbsp;java.lang.String&nbsp;centreText&#8203;(java.lang.String&nbsp;text,
+                                          int&nbsp;width)</pre>
+<div class="block">Takes a string as input, and a maximum length, then centres the text within that length.
+ <p>
+ If there is an odd amount of spacing required, we favour extra spacing on the left.
+ <p>
+ If the input is longer than the width, nothing will be done.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>text</code> - input string to be centred</dd>
+<dd><code>width</code> - the maximum length per line</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>centred string</dd>
 </dl>
 </li>
 </ul>
