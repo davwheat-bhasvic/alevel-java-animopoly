@@ -432,11 +432,14 @@ extends <a href="BoardSpace.html" title="class in dev.davwheat">BoardSpace</a></
 <ul class="blockList">
 <li class="blockList">
 <h4>payForStop</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;payForStop&#8203;(<a href="Player.html" title="class in dev.davwheat">Player</a>&nbsp;actor)</pre>
+<pre class="methodSignature">public&nbsp;void&nbsp;payForStop&#8203;(<a href="Player.html" title="class in dev.davwheat">Player</a>&nbsp;actor)
+                throws <a href="exceptions/InsufficientBalanceException.html" title="class in dev.davwheat.exceptions">InsufficientBalanceException</a></pre>
 <div class="block">Charge to provided Player for stopping on this Animal.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>actor</code> - Player</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="exceptions/InsufficientBalanceException.html" title="class in dev.davwheat.exceptions">InsufficientBalanceException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -447,7 +450,8 @@ extends <a href="BoardSpace.html" title="class in dev.davwheat">BoardSpace</a></
 <li class="blockList">
 <h4>purchase</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;purchase&#8203;(<a href="Player.html" title="class in dev.davwheat">Player</a>&nbsp;actor)
-              throws <a href="exceptions/AnimalAlreadyOwnedException.html" title="class in dev.davwheat.exceptions">AnimalAlreadyOwnedException</a></pre>
+              throws <a href="exceptions/AnimalAlreadyOwnedException.html" title="class in dev.davwheat.exceptions">AnimalAlreadyOwnedException</a>,
+                     <a href="exceptions/InsufficientBalanceException.html" title="class in dev.davwheat.exceptions">InsufficientBalanceException</a></pre>
 <div class="block">Attempts to purchase the Animal and make it owned by the Player.
  <p>
  Also handles the charging of the purchase cost.</div>
@@ -456,6 +460,7 @@ extends <a href="BoardSpace.html" title="class in dev.davwheat">BoardSpace</a></
 <dd><code>actor</code> - Person buying the Animal</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code><a href="exceptions/AnimalAlreadyOwnedException.html" title="class in dev.davwheat.exceptions">AnimalAlreadyOwnedException</a></code> - Animal is already owned by another player.</dd>
+<dd><code><a href="exceptions/InsufficientBalanceException.html" title="class in dev.davwheat.exceptions">InsufficientBalanceException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -468,7 +473,8 @@ extends <a href="BoardSpace.html" title="class in dev.davwheat">BoardSpace</a></
 <pre class="methodSignature">public&nbsp;void&nbsp;upgrade&#8203;(<a href="Player.html" title="class in dev.davwheat">Player</a>&nbsp;actor)
              throws <a href="exceptions/AnimalNotOwnedException.html" title="class in dev.davwheat.exceptions">AnimalNotOwnedException</a>,
                     javax.naming.NoPermissionException,
-                    <a href="exceptions/AnimalUpgradeNotAllowedException.html" title="class in dev.davwheat.exceptions">AnimalUpgradeNotAllowedException</a></pre>
+                    <a href="exceptions/AnimalUpgradeNotAllowedException.html" title="class in dev.davwheat.exceptions">AnimalUpgradeNotAllowedException</a>,
+                    <a href="exceptions/InsufficientBalanceException.html" title="class in dev.davwheat.exceptions">InsufficientBalanceException</a></pre>
 <div class="block">Attempts to upgrade an Animal to the next level.
  <p>
  You should always try to check if the Animal <i>can</i> be upgraded first
@@ -480,6 +486,7 @@ extends <a href="BoardSpace.html" title="class in dev.davwheat">BoardSpace</a></
 <dd><code><a href="exceptions/AnimalNotOwnedException.html" title="class in dev.davwheat.exceptions">AnimalNotOwnedException</a></code> - Thrown when the Animal isn't owned.</dd>
 <dd><code>javax.naming.NoPermissionException</code> - Thrown when a Player other than the Animal owner attempts to upgrade the Animal.</dd>
 <dd><code><a href="exceptions/AnimalUpgradeNotAllowedException.html" title="class in dev.davwheat.exceptions">AnimalUpgradeNotAllowedException</a></code> - Thrown when an Animal is already at the maximum level.</dd>
+<dd><code><a href="exceptions/InsufficientBalanceException.html" title="class in dev.davwheat.exceptions">InsufficientBalanceException</a></code></dd>
 </dl>
 </li>
 </ul>

@@ -321,7 +321,8 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>takeAction</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;takeAction&#8203;(<a href="Player.html" title="class in dev.davwheat">Player</a>&nbsp;actor)</pre>
+<pre class="methodSignature">public&nbsp;void&nbsp;takeAction&#8203;(<a href="Player.html" title="class in dev.davwheat">Player</a>&nbsp;actor)
+                throws <a href="exceptions/InsufficientBalanceException.html" title="class in dev.davwheat.exceptions">InsufficientBalanceException</a></pre>
 <div class="block">Takes the action on the card against a specified player and
  prints info about that action.
  <p>
@@ -330,6 +331,8 @@ extends java.lang.Object</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>actor</code> - Player to perform actions upon</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="exceptions/InsufficientBalanceException.html" title="class in dev.davwheat.exceptions">InsufficientBalanceException</a></code></dd>
 </dl>
 </li>
 </ul>

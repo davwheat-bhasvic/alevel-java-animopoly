@@ -422,7 +422,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>adjustBankBalance</h4>
 <pre class="methodSignature">public&nbsp;double&nbsp;adjustBankBalance&#8203;(double&nbsp;change,
-                                <a href="Player.html" title="class in dev.davwheat">Player</a>&nbsp;reciprocalActionPlayer)</pre>
+                                <a href="Player.html" title="class in dev.davwheat">Player</a>&nbsp;reciprocalActionPlayer)
+                         throws <a href="exceptions/InsufficientBalanceException.html" title="class in dev.davwheat.exceptions">InsufficientBalanceException</a></pre>
 <div class="block">Adjusts the Player's bank balance by a fixed amount.
  <p>
  You can also pass another Player here to adjust their balance by the opposite amount!
@@ -434,6 +435,8 @@ extends java.lang.Object</pre>
 <dd><code>reciprocalActionPlayer</code> - An player to perform the opposite change on.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>New player balance.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="exceptions/InsufficientBalanceException.html" title="class in dev.davwheat.exceptions">InsufficientBalanceException</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -443,7 +446,8 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>adjustBankBalance</h4>
-<pre class="methodSignature">public&nbsp;double&nbsp;adjustBankBalance&#8203;(double&nbsp;change)</pre>
+<pre class="methodSignature">public&nbsp;double&nbsp;adjustBankBalance&#8203;(double&nbsp;change)
+                         throws <a href="exceptions/InsufficientBalanceException.html" title="class in dev.davwheat.exceptions">InsufficientBalanceException</a></pre>
 <div class="block">Adjusts the Player's bank balance by a fixed amount.
  <p>
  You can also pass another Player here to adjust their balance by the opposite amount!
@@ -454,6 +458,8 @@ extends java.lang.Object</pre>
 <dd><code>change</code> - Amount to change the balance by (+/-)</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>New player balance.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="exceptions/InsufficientBalanceException.html" title="class in dev.davwheat.exceptions">InsufficientBalanceException</a></code></dd>
 </dl>
 </li>
 </ul>
