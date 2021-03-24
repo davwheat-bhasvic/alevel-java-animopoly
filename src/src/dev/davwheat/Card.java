@@ -1,6 +1,7 @@
 package dev.davwheat;
 
 import dev.davwheat.enums.Color;
+import dev.davwheat.exceptions.InsufficientBalanceException;
 
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class Card {
      *
      * @param actor Player to perform actions upon
      */
-    public void takeAction(final Player actor) {
+    public void takeAction(final Player actor) throws InsufficientBalanceException {
         if (actor == null) {
             throw new NullPointerException("actor cannot be null.");
         }

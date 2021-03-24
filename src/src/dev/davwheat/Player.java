@@ -3,6 +3,7 @@ package dev.davwheat;
 import dev.davwheat.enums.BoardSpaceType;
 import dev.davwheat.enums.Color;
 import dev.davwheat.exceptions.AnimalAlreadyOwnedException;
+import dev.davwheat.exceptions.InsufficientBalanceException;
 
 import java.util.Scanner;
 
@@ -115,7 +116,7 @@ public class Player {
      * @param reciprocalActionPlayer An player to perform the opposite change on.
      * @return New player balance.
      */
-    public double adjustBankBalance(final double change, final Player reciprocalActionPlayer) {
+    public double adjustBankBalance(final double change, final Player reciprocalActionPlayer) throws InsufficientBalanceException {
         if (reciprocalActionPlayer == null) {
             throw new NullPointerException("reciprocalActionPlayer must be a valid instance of Player, and not null.");
         }
@@ -135,7 +136,11 @@ public class Player {
      * @param change Amount to change the balance by (+/-)
      * @return New player balance.
      */
-    public double adjustBankBalance(final double change) {
+    public double adjustBankBalance(final double change) throws InsufficientBalanceException {
+        if (change < 0 && this.currentBankBalance < -change) {
+            throw new InsufficientBalanceException("Not enough money for this balance change.");
+        }
+
         this.currentBankBalance += change;
         return this.currentBankBalance;
     }

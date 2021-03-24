@@ -6,6 +6,7 @@ import dev.davwheat.enums.Color;
 import dev.davwheat.exceptions.AnimalAlreadyOwnedException;
 import dev.davwheat.exceptions.AnimalNotOwnedException;
 import dev.davwheat.exceptions.AnimalUpgradeNotAllowedException;
+import dev.davwheat.exceptions.InsufficientBalanceException;
 
 import javax.naming.NoPermissionException;
 import java.util.ArrayList;
@@ -95,7 +96,7 @@ public class Animal extends BoardSpace {
      *
      * @param actor Player
      */
-    public void payForStop(final Player actor) {
+    public void payForStop(final Player actor) throws InsufficientBalanceException {
         if (this.isOwnedBy(actor)) {
             // Don't charge the owner of this Animal
             return;
@@ -114,7 +115,7 @@ public class Animal extends BoardSpace {
      * @param actor Person buying the Animal
      * @throws AnimalAlreadyOwnedException Animal is already owned by another player.
      */
-    public void purchase(final Player actor) throws AnimalAlreadyOwnedException {
+    public void purchase(final Player actor) throws AnimalAlreadyOwnedException, InsufficientBalanceException {
         if (this.getOwner() != null) {
             throw new AnimalAlreadyOwnedException("Cannot purchase an animal if it is already owned.");
         }
@@ -137,7 +138,7 @@ public class Animal extends BoardSpace {
      * @throws NoPermissionException            Thrown when a Player other than the Animal owner attempts to upgrade the Animal.
      * @throws AnimalUpgradeNotAllowedException Thrown when an Animal is already at the maximum level.
      */
-    public void upgrade(final Player actor) throws AnimalNotOwnedException, NoPermissionException, AnimalUpgradeNotAllowedException {
+    public void upgrade(final Player actor) throws AnimalNotOwnedException, NoPermissionException, AnimalUpgradeNotAllowedException, InsufficientBalanceException {
         if (this.getOwner() == null) {
             throw new AnimalNotOwnedException("An animal cannot be upgraded if it is not owned. You should always check if an upgrade is possible using `isUpgradable(player)` before attempting an upgrade.");
         } else if (!this.isOwnedBy(actor)) {
