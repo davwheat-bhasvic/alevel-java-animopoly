@@ -308,9 +308,17 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="dev/davwheat/GameBoard.html#getBoardSpaceAtPosition(int)">getBoardSpaceAtPosition(int)</a></span> - Method in class dev.davwheat.<a href="dev/davwheat/GameBoard.html" title="class in dev.davwheat">GameBoard</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="dev/davwheat/Animal.html#getCurrentLevel()">getCurrentLevel()</a></span> - Method in class dev.davwheat.<a href="dev/davwheat/Animal.html" title="class in dev.davwheat">Animal</a></dt>
+<dd>
+<div class="block">Gets the current level of this Animal.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="dev/davwheat/Dice.html#getOneRoll(int)">getOneRoll(int)</a></span> - Method in class dev.davwheat.<a href="dev/davwheat/Dice.html" title="class in dev.davwheat">Dice</a></dt>
 <dd>
 <div class="block">Gets the value of one specific dice roll.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="dev/davwheat/GameBoard.html#getOwnedAnimals(dev.davwheat.Player)">getOwnedAnimals(Player)</a></span> - Method in class dev.davwheat.<a href="dev/davwheat/GameBoard.html" title="class in dev.davwheat">GameBoard</a></dt>
+<dd>
+<div class="block">Fetches all the Animals owned by the provided actor.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="dev/davwheat/Animal.html#getOwner()">getOwner()</a></span> - Method in class dev.davwheat.<a href="dev/davwheat/Animal.html" title="class in dev.davwheat">Animal</a></dt>
 <dd>
@@ -379,6 +387,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="dev/davwheat/BoardSpace.html#isOwnable">isOwnable</a></span> - Variable in class dev.davwheat.<a href="dev/davwheat/BoardSpace.html" title="class in dev.davwheat">BoardSpace</a></dt>
 <dd>
 <div class="block">Whether this BoardSpace can be owned by a Player.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="dev/davwheat/Animal.html#isOwnedBy(dev.davwheat.Player)">isOwnedBy(Player)</a></span> - Method in class dev.davwheat.<a href="dev/davwheat/Animal.html" title="class in dev.davwheat">Animal</a></dt>
+<dd>
+<div class="block">Tests if the provided Player owns this animal.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="dev/davwheat/Animal.html#isUpgradable(dev.davwheat.Player)">isUpgradable(Player)</a></span> - Method in class dev.davwheat.<a href="dev/davwheat/Animal.html" title="class in dev.davwheat">Animal</a></dt>
 <dd>
@@ -484,6 +496,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Prints a visual representation of the card to stdout.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="dev/davwheat/Card.html#printCard()">printCard()</a></span> - Method in class dev.davwheat.<a href="dev/davwheat/Card.html" title="class in dev.davwheat">Card</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="dev/davwheat/GameBoard.html#printCurrentBoard()">printCurrentBoard()</a></span> - Method in class dev.davwheat.<a href="dev/davwheat/GameBoard.html" title="class in dev.davwheat">GameBoard</a></dt>
 <dd>
 <div class="block">Print the current game board to the console.</div>
@@ -593,7 +607,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dl>
 <dt><span class="memberNameLink"><a href="dev/davwheat/Card.html#takeAction(dev.davwheat.Player)">takeAction(Player)</a></span> - Method in class dev.davwheat.<a href="dev/davwheat/Card.html" title="class in dev.davwheat">Card</a></dt>
 <dd>
-<div class="block">Takes the action on the card against a specified player.</div>
+<div class="block">Takes the action on the card against a specified player and
+ prints info about that action.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="dev/davwheat/Deck.html#takeCard()">takeCard()</a></span> - Method in class dev.davwheat.<a href="dev/davwheat/Deck.html" title="class in dev.davwheat">Deck</a></dt>
 <dd>

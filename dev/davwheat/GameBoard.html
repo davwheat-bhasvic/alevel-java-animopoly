@@ -30,7 +30,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10};
+var data = {"i0":10,"i1":10,"i2":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -177,6 +177,13 @@ extends java.lang.Object</pre>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor" id="i1">
+<td class="colFirst"><code>java.util.List&lt;<a href="Animal.html" title="class in dev.davwheat">Animal</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getOwnedAnimals(dev.davwheat.Player)">getOwnedAnimals</a></span>&#8203;(<a href="Player.html" title="class in dev.davwheat">Player</a>&nbsp;actor)</code></th>
+<td class="colLast">
+<div class="block">Fetches all the Animals owned by the provided actor.</div>
+</td>
+</tr>
+<tr class="altColor" id="i2">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#printCurrentBoard()">printCurrentBoard</a></span>()</code></th>
 <td class="colLast">
@@ -247,10 +254,26 @@ extends java.lang.Object</pre>
 <a id="getBoardSpaceAtPosition(int)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getBoardSpaceAtPosition</h4>
 <pre class="methodSignature">public&nbsp;<a href="BoardSpace.html" title="class in dev.davwheat">BoardSpace</a>&nbsp;getBoardSpaceAtPosition&#8203;(int&nbsp;index)</pre>
+</li>
+</ul>
+<a id="getOwnedAnimals(dev.davwheat.Player)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getOwnedAnimals</h4>
+<pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="Animal.html" title="class in dev.davwheat">Animal</a>&gt;&nbsp;getOwnedAnimals&#8203;(<a href="Player.html" title="class in dev.davwheat">Player</a>&nbsp;actor)</pre>
+<div class="block">Fetches all the Animals owned by the provided actor.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>actor</code> - Player</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>List of Animals owned by the player</dd>
+</dl>
 </li>
 </ul>
 </li>

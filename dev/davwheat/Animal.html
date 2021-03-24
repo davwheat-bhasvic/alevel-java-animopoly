@@ -30,7 +30,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -231,48 +231,62 @@ extends <a href="BoardSpace.html" title="class in dev.davwheat">BoardSpace</a></
 </tr>
 <tbody>
 <tr class="altColor" id="i0">
+<td class="colFirst"><code><a href="enums/AnimalLevel.html" title="enum in dev.davwheat.enums">AnimalLevel</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getCurrentLevel()">getCurrentLevel</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Gets the current level of this Animal.</div>
+</td>
+</tr>
+<tr class="rowColor" id="i1">
 <td class="colFirst"><code><a href="Player.html" title="class in dev.davwheat">Player</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getOwner()">getOwner</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Gets the owner of this animal</div>
 </td>
 </tr>
-<tr class="rowColor" id="i1">
+<tr class="altColor" id="i2">
 <td class="colFirst"><code>double</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getStopCost(dev.davwheat.Player)">getStopCost</a></span>&#8203;(<a href="Player.html" title="class in dev.davwheat">Player</a>&nbsp;actor)</code></th>
 <td class="colLast">
 <div class="block">Get the cost for the provided Player to stop on this Animal's BoardSpace.</div>
 </td>
 </tr>
-<tr class="altColor" id="i2">
+<tr class="rowColor" id="i3">
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isOwnedBy(dev.davwheat.Player)">isOwnedBy</a></span>&#8203;(<a href="Player.html" title="class in dev.davwheat">Player</a>&nbsp;actor)</code></th>
+<td class="colLast">
+<div class="block">Tests if the provided Player owns this animal.</div>
+</td>
+</tr>
+<tr class="altColor" id="i4">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isUpgradable(dev.davwheat.Player)">isUpgradable</a></span>&#8203;(<a href="Player.html" title="class in dev.davwheat">Player</a>&nbsp;actor)</code></th>
 <td class="colLast">
 <div class="block">Determines whether the Animal is upgradable by the specified Player.</div>
 </td>
 </tr>
-<tr class="rowColor" id="i3">
+<tr class="rowColor" id="i5">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#payForStop(dev.davwheat.Player)">payForStop</a></span>&#8203;(<a href="Player.html" title="class in dev.davwheat">Player</a>&nbsp;actor)</code></th>
 <td class="colLast">
 <div class="block">Charge to provided Player for stopping on this Animal.</div>
 </td>
 </tr>
-<tr class="altColor" id="i4">
+<tr class="altColor" id="i6">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#printCard()">printCard</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Prints a visual representation of the card to stdout.</div>
 </td>
 </tr>
-<tr class="rowColor" id="i5">
+<tr class="rowColor" id="i7">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#purchase(dev.davwheat.Player)">purchase</a></span>&#8203;(<a href="Player.html" title="class in dev.davwheat">Player</a>&nbsp;actor)</code></th>
 <td class="colLast">
 <div class="block">Attempts to purchase the Animal and make it owned by the Player.</div>
 </td>
 </tr>
-<tr class="altColor" id="i6">
+<tr class="altColor" id="i8">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#upgrade(dev.davwheat.Player)">upgrade</a></span>&#8203;(<a href="Player.html" title="class in dev.davwheat">Player</a>&nbsp;actor)</code></th>
 <td class="colLast">
@@ -485,14 +499,44 @@ extends <a href="BoardSpace.html" title="class in dev.davwheat">BoardSpace</a></
 </dl>
 </li>
 </ul>
+<a id="isOwnedBy(dev.davwheat.Player)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isOwnedBy</h4>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;isOwnedBy&#8203;(<a href="Player.html" title="class in dev.davwheat">Player</a>&nbsp;actor)</pre>
+<div class="block">Tests if the provided Player owns this animal.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>actor</code> - The player</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>If the player owns the animal</dd>
+</dl>
+</li>
+</ul>
 <a id="printCard()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>printCard</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;printCard()</pre>
 <div class="block">Prints a visual representation of the card to stdout.</div>
+</li>
+</ul>
+<a id="getCurrentLevel()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getCurrentLevel</h4>
+<pre class="methodSignature">public&nbsp;<a href="enums/AnimalLevel.html" title="enum in dev.davwheat.enums">AnimalLevel</a>&nbsp;getCurrentLevel()</pre>
+<div class="block">Gets the current level of this Animal.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the level</dd>
+</dl>
 </li>
 </ul>
 </li>

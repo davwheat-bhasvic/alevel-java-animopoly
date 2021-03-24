@@ -30,7 +30,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10};
+var data = {"i0":10,"i1":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -212,9 +212,15 @@ extends java.lang.Object</pre>
 <tbody>
 <tr class="altColor" id="i0">
 <td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#printCard()">printCard</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor" id="i1">
+<td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#takeAction(dev.davwheat.Player)">takeAction</a></span>&#8203;(<a href="Player.html" title="class in dev.davwheat">Player</a>&nbsp;actor)</code></th>
 <td class="colLast">
-<div class="block">Takes the action on the card against a specified player.</div>
+<div class="block">Takes the action on the card against a specified player and
+ prints info about that action.</div>
 </td>
 </tr>
 </tbody>
@@ -312,11 +318,12 @@ extends java.lang.Object</pre>
 <a id="takeAction(dev.davwheat.Player)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>takeAction</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;takeAction&#8203;(<a href="Player.html" title="class in dev.davwheat">Player</a>&nbsp;actor)</pre>
-<div class="block">Takes the action on the card against a specified player.
+<div class="block">Takes the action on the card against a specified player and
+ prints info about that action.
  <p>
  Will adjust their bank balance as required, and make them
  miss the next turn if needed.</div>
@@ -324,6 +331,15 @@ extends java.lang.Object</pre>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>actor</code> - Player to perform actions upon</dd>
 </dl>
+</li>
+</ul>
+<a id="printCard()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>printCard</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;printCard()</pre>
 </li>
 </ul>
 </li>
