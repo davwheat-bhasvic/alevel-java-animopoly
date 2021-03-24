@@ -34,8 +34,8 @@ public class Game {
      * Creates an instance of the `Game` class.
      */
     public Game() {
-        this.initialiseGame();
         this.cardDeck = Deck.createBaseDeck();
+        this.initialiseGame();
     }
 
     /**

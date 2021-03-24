@@ -171,8 +171,9 @@ public class Animal extends BoardSpace {
      * @param actor The player
      * @return If the player owns the animal
      */
-    private boolean isOwnedBy(final Player actor) {
-        return (this.getOwner() == actor);
+    public boolean isOwnedBy(final Player actor) {
+        final Player owner = this.getOwner();
+        return (owner != null && owner.equals(actor));
     }
 
     /**
@@ -211,5 +212,14 @@ public class Animal extends BoardSpace {
         }
 
         System.out.printf("┗%s┛\n", cardInnerFrame);
+    }
+
+    /**
+     * Gets the current level of this Animal.
+     *
+     * @return the level
+     */
+    public AnimalLevel getCurrentLevel() {
+        return this.currentLevel;
     }
 }

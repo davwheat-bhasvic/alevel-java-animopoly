@@ -78,7 +78,7 @@ public class Dice {
         return switch (diceNumber) {
             case 1 -> this.d1;
             case 2 -> this.d2;
-            default -> throw new IllegalArgumentException("Dice number must be 0 or 1.");
+            default -> throw new IllegalArgumentException("Dice number must be 1 or 2.");
         };
     }
 }

@@ -2,6 +2,10 @@ package dev.davwheat;
 
 import dev.davwheat.enums.BoardSpaceType;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Class that handles storing and managing the data relating to the board,
  * including the spaces on the board.
@@ -111,5 +115,27 @@ public class GameBoard {
                 new Animal("Tiger", 525d, 200d, new double[]{40d, 85d, 125d, 220d}, 24, this.gameInstance),
                 new Animal("Lion", 600d, 200d, new double[]{50d, 100d, 150d, 275d}, 25, this.gameInstance),
         };
+    }
+
+    /**
+     * Fetches all the Animals owned by the provided actor.
+     *
+     * @param actor Player
+     * @return List of Animals owned by the player
+     */
+    public List<Animal> getOwnedAnimals(final Player actor) {
+        final ArrayList<Animal> animals = new ArrayList<>();
+
+        Arrays.stream(this.allBoardSpaces).forEachOrdered(bs -> {
+            if (bs instanceof Animal) {
+                final Player owner = ((Animal) bs).getOwner();
+
+                if (owner != null && owner.equals(actor)) {
+                    animals.add((Animal) bs);
+                }
+            }
+        });
+
+        return animals;
     }
 }
