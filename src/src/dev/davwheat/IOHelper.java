@@ -7,10 +7,24 @@ import java.util.function.Function;
  * Class to make inputting data much easier.
  */
 public class IOHelper {
-    Scanner scanner;
+    protected Scanner scanner;
 
     public IOHelper() {
         this.scanner = new Scanner(System.in);
+    }
+
+    /**
+     * Used in tests to allow a custom Scanner to be set.
+     * <p>
+     * This allows us to provide custom input to the IOHelper functions.
+     * <p>
+     * <b>Do not use this in normal code.</b>
+     *
+     * @param scanner custom scanner
+     * @implNote This is only used within tests. Please DO NOT use this in normal code.
+     */
+    public void setScanner(final Scanner scanner) {
+        this.scanner = scanner;
     }
 
     /**
@@ -125,7 +139,7 @@ public class IOHelper {
     }
 
     private boolean validStringInput(final String input) {
-        return input.length() > 0;
+        return input.strip().length() > 0;
     }
 
     private boolean validIntInput(final String input) {
